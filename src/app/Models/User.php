@@ -52,8 +52,8 @@ class User extends Model
     public static function validationPassword(bool $nullable = false)
     {
         $arr = [];
-        if (!$nullable) $arr[]  = 'required';
-        $arr += ['confirm'];
+        if ($nullable) $arr[]  = 'nullable';
+        $arr = array_merge($arr, ['required', 'confirm']);
         return $arr;
     }
 

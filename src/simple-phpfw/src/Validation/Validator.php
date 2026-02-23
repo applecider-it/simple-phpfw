@@ -30,6 +30,11 @@ abstract class Validator
         return !empty($this->errors);
     }
 
+    public function valid(): bool
+    {
+        return !$this->fails();
+    }
+
     public function errors(): array
     {
         return $this->errors;
@@ -40,8 +45,10 @@ abstract class Validator
         return $this->labels[$field] ?? $field;
     }
 
-    /** 検査実行 */
-    protected function validate(): void
+    /**
+     * 検査実行
+     */
+    private function validate(): void
     {
         foreach ($this->rules as $field => $ruleArray) {
             if (!is_array($ruleArray)) {
@@ -50,20 +57,50 @@ abstract class Validator
 
             $value = $this->data[$field] ?? null;
 
-            foreach ($ruleArray as $ruleValue) {
-                // [rule, param1, param2 ....]
-                $ruleValue = (array) $ruleValue;
+            $this->validateValue($field, $value, $ruleArray);
+        }
+    }
 
-                $rule = array_shift($ruleValue);
-                $params = $ruleValue;
+    /**
+     * １項目だけ、検査実行
+     * 
+     * ruleがnullableの時は、特殊な処理が入る
+     */
+    private function validateValue(string $field, mixed $value, array $ruleArray): void
+    {
+        /** @var bool これがtrueの時はnullを許容する */
+        $nullable = false;
 
-                $method = "validate_" . $rule;
+        foreach ($ruleArray as $ruleValue) {
+            // [rule, param1, param2 ....]
+            $ruleValue = (array) $ruleValue;
 
-                if (method_exists($this, $method)) {
-                    $this->$method($field, $value, $params);
-                } else {
-                    throw new \Exception("Validation rule '{$rule}' not implemented");
+            $rule = array_shift($ruleValue);
+            $params = $ruleValue;
+
+            if ($rule === 'nullable') {
+                // nullableが指定されたとき
+
+                $nullable = true;
+                continue;
+            }
+
+            $method = "validate_" . $rule;
+
+            if (method_exists($this, $method)) {
+                // ruleが存在する時
+
+                if ($nullable) {
+                    // nullを許容する時
+
+                    if ($this->isBlank($value)) {
+                        continue;
+                    }
                 }
+
+                $this->$method($field, $value, $params);
+            } else {
+                throw new \Exception("Validation rule '{$rule}' not implemented");
             }
         }
     }

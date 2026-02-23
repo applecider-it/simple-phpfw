@@ -14,8 +14,6 @@ trait CustomValidations
     /** 独自のチェックロジック */
     protected function validate_original($field, $value, $params)
     {
-        if ($this->isBlank($value)) return;
-
         $validValue = $this->data[$params[0]] . $this->data[$params[1]];
 
         if ($value !== $validValue) {

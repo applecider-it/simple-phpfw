@@ -23,8 +23,6 @@ trait BasicValidations
     /** メール検査 */
     protected function validate_email($field, $value): void
     {
-        if ($this->isBlank($value)) return;
-
         if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
             $label = $this->getLabel($field);
             $this->errors[$field][] = Lang::get('validation.errors.email', ['label' => $label]);
@@ -34,8 +32,6 @@ trait BasicValidations
     /** 数値検査 */
     protected function validate_numeric($field, $value): void
     {
-        if ($this->isBlank($value)) return;
-
         if (!is_numeric($value)) {
             $label = $this->getLabel($field);
             $this->errors[$field][] = Lang::get('validation.errors.numeric', ['label' => $label]);
@@ -45,8 +41,6 @@ trait BasicValidations
     /** 最小値検査 */
     protected function validate_min($field, $value, $params): void
     {
-        if ($this->isBlank($value)) return;
-
         $min = $params[0];
         if (is_numeric($value) && $value < $min) {
             $label = $this->getLabel($field);
@@ -57,8 +51,6 @@ trait BasicValidations
     /** 最大値検査 */
     protected function validate_max($field, $value, $params): void
     {
-        if ($this->isBlank($value)) return;
-
         $max = $params[0];
         if (is_numeric($value) && $value > $max) {
             $label = $this->getLabel($field);
@@ -69,8 +61,6 @@ trait BasicValidations
     /** 値の確認の検査 */
     protected function validate_confirm($field, $value): void
     {
-        if ($this->isBlank($value)) return;
-
         $confirmValue = $this->data[$field . '_confirm'];
 
         if ($value !== $confirmValue) {
@@ -82,8 +72,6 @@ trait BasicValidations
     /** DBユニーク値の検査 */
     protected function validate_unique($field, $value, $params): void
     {
-        if ($this->isBlank($value)) return;
-
         $column = $params[0];
         $query = $params[1];
 
