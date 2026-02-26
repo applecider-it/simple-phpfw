@@ -12,4 +12,4 @@ require_once dirname(__DIR__) . '/bootstrap/app.php';
 
 (new SFW\Boot\Web)->dispatch();
 
-$benchmarkService->closeBenchmark();
+//$benchmarkService->closeBenchmark();
