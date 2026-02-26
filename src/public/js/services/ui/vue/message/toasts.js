@@ -1,3 +1,5 @@
+const idPrefix = "app-local__js__services__ui__vue__message__toast";
+
 /** トーストリストコンポーネント */
 const Toasts = {
   props: ["toasts"],
@@ -13,7 +15,7 @@ const Toasts = {
         padding: "0.25rem 0.75rem",
         borderRadius: "0.5rem",
         boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-        animation: "app-local__js__services__ui__vue__message__toast__slide-in 0.3s ease-out",
+        animation: idPrefix + "__slide-in 0.3s ease-out",
       };
     },
 
@@ -45,13 +47,13 @@ const Toasts = {
 
 /** スタイルを一度だけ追加 */
 (function () {
-  const id = "app-local__js__services__ui__vue__message__toast__style";
+  const id = idPrefix + "__style";
   if (document.getElementById(id)) return;
 
   const style = document.createElement("style");
   style.id = id;
   style.textContent = `
-    @keyframes app-local__js__services__ui__vue__message__toast__slide-in {
+    @keyframes ${idPrefix}__slide-in {
       from {
         opacity: 0;
         transform: translateX(20px);
