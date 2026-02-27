@@ -4,6 +4,8 @@ use SFW\Core\Config;
 
 $adminPrefix = Config::get('app.adminPrefix');
 
+$return['breadcrumbs'] = ['admin.users.edit', $data];
+
 $data['exists'] = true;
 ?>
 <h2 class="app-h2">📝 admin.user.edit</h2>

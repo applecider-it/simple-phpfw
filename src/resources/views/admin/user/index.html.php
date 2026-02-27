@@ -3,6 +3,8 @@
 use SFW\Core\Config;
 
 $adminPrefix = Config::get('app.adminPrefix');
+
+$return['breadcrumbs'] = ['admin.users.index'];
 ?>
 <h2 class="app-h2">admin.user.index</h2>
 

@@ -10,6 +10,7 @@ use SFW\Core\Env;
 use SFW\Core\Lang;
 use SFW\Core\Config;
 use SFW\Web\Router;
+use SFW\Web\Breadcrumbs;
 use SFW\Database\DB;
 use SFW\Data\Path;
 
@@ -30,6 +31,7 @@ class Common
 
         $this->setupService();
         $this->includeRoutes();
+        $this->includeBreadcrumbs();
         $this->setupDatabase();
         $this->setupRedis();
 
@@ -50,6 +52,7 @@ class Common
     private function setupService(): void
     {
         App::getContainer()->setSingleton('router', new Router(), 'Router');
+        App::getContainer()->setSingleton('breadcrumbs', new Breadcrumbs(), 'Breadcrumbs');
         App::getContainer()->setSingleton('config', $this->includeConfig(), 'Config');
         App::getContainer()->setSingleton('lang', $this->includeLang(), 'Language Data');
         App::getContainer()->setSingleton('callback', new Callback(), 'Callback class');
@@ -62,6 +65,15 @@ class Common
         $router = App::get('router');
 
         include(SFW_PROJECT_ROOT . '/routes/web.php');
+    }
+
+    /** パンくず読み込み */
+    private function includeBreadcrumbs(): void
+    {
+        // include先で、$breadcrumbsが使われている
+        $breadcrumbs = App::get('breadcrumbs');
+
+        include(SFW_PROJECT_ROOT . '/config/breadcrumbs.php');
     }
 
     /** データベースセットアップ */

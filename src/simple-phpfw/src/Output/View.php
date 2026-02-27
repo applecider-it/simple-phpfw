@@ -23,7 +23,7 @@ class View
     /**
      * 描画して文字列を返す
      */
-    public function render(string $name, array $data = []): string
+    public function render(string $name, array $data = [], mixed &$return = null): string
     {
         $baseDir = $this->baseDir ?? SFW_PROJECT_ROOT . '/resources/views';
         $path = $baseDir . '/' . str_replace('.', '/', $name) . self::FILE_POSTFIX;
@@ -38,13 +38,13 @@ class View
             'path' => $path,
         ];
 
-        return $this->includeTemplate($meta, $data);
+        return $this->includeTemplate($meta, $data, $return);
     }
 
     /**
      * アウトバッファーを使い、テンプレート読み込み
      */
-    private function includeTemplate(array $meta, array $data): string
+    private function includeTemplate(array $meta, array $data, mixed &$return): string
     {
         // $dataはインクルード先で利用している
 
@@ -88,11 +88,13 @@ class View
     ): string {
         $this->appendGlobalData($globalData);
 
-        $val = $this->render($name, $data);
+        $return = [];
+        $val = $this->render($name, $data, $return);
 
         if ($layout) {
             $val = $this->render($layout, [
                 'content' => $val,
+                'contentInfo' => $return,
             ] + $layoutData);
         }
 
