@@ -1,11 +1,12 @@
 <?php
 
 use SFW\Core\Config;
+use SFW\Output\View;
 use function SFW\Helpers\route;
 
 $adminPrefix = Config::get('app.adminPrefix');
 
-$return['breadcrumbs'] = ['admin.users.index'];
+$data[View::KEY_LAYOUT_OPTIONS]->breadcrumbs = ['admin.users.index'];
 ?>
 <h2 class="app-h2">admin.user.index</h2>
 

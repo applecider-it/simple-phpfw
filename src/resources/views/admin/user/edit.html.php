@@ -1,8 +1,9 @@
 <?php
 
+use SFW\Output\View;
 use function SFW\Helpers\route;
 
-$return['breadcrumbs'] = ['admin.users.edit', $data];
+$data[View::KEY_LAYOUT_OPTIONS]->breadcrumbs = ['admin.users.edit', $data];
 
 $data['exists'] = true;
 ?>

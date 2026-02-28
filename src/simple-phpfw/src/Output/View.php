@@ -14,6 +14,9 @@ class View
     /** テンプレートファイルのポストフィックス */
     private const FILE_POSTFIX = '.html.php';
 
+    /** レイアウトに渡すデータのキー */
+    public const KEY_LAYOUT_OPTIONS = '___SFW_LAYOUT_OPTIONS';
+
     /** 基準となるディレクトリパス。nullだとresources/viewsになる。 */
     private ?string $baseDir = null;
 
@@ -23,7 +26,7 @@ class View
     /**
      * 描画して文字列を返す
      */
-    public function render(string $name, array $data = [], mixed &$return = null): string
+    public function render(string $name, array $data = []): string
     {
         $baseDir = $this->baseDir ?? SFW_PROJECT_ROOT . '/resources/views';
         $path = $baseDir . '/' . str_replace('.', '/', $name) . self::FILE_POSTFIX;
@@ -38,13 +41,13 @@ class View
             'path' => $path,
         ];
 
-        return $this->includeTemplate($meta, $data, $return);
+        return $this->includeTemplate($meta, $data);
     }
 
     /**
      * アウトバッファーを使い、テンプレート読み込み
      */
-    private function includeTemplate(array $meta, array $data, mixed &$return): string
+    private function includeTemplate(array $meta, array $data): string
     {
         // $dataはインクルード先で利用している
 
@@ -88,13 +91,20 @@ class View
     ): string {
         $this->appendGlobalData($globalData);
 
-        $return = [];
-        $val = $this->render($name, $data, $return);
+        // レイアウトに渡す値
+        //（オブジェクトにすることで参照渡しになるので、$nameのテンプレートからレイアウトに値を渡せる）
+        $layoutOptions = new \stdClass;
+
+        $data[self::KEY_LAYOUT_OPTIONS] = $layoutOptions;
+
+        $val = $this->render($name, $data);
 
         if ($layout) {
+            // レイアウトの指定があるとき
+
             $val = $this->render($layout, [
                 'content' => $val,
-                'contentInfo' => $return,
+                self::KEY_LAYOUT_OPTIONS => $data[self::KEY_LAYOUT_OPTIONS],
             ] + $layoutData);
         }
 
