@@ -11,12 +11,6 @@ use SFW\Core\Config;
  */
 class View
 {
-    /** レイアウトに渡すデータのキー */
-    public const KEY_LAYOUT_OPTIONS = '___SFW_LAYOUT_OPTIONS';
-
-    /** レイアウトコンテンツのキー */
-    public const KEY_LAYOUT_CONTENT = '___SFW_LAYOUT_CONTENT';
-
     /** テンプレートファイルのポストフィックス */
     private const FILE_POSTFIX = '.html.php';
 
@@ -80,55 +74,5 @@ class View
     public function appendCommonData(array $data): void
     {
         $this->data = $data + $this->data;
-    }
-
-    /**
-     * レイアウト付きで描画して文字列を返す
-     */
-    public function renderWithLayout(
-        string $name,
-        array $data = [],
-        ?string $layout = null,
-        array $layoutData = [],
-        array $globalData = []
-    ): string {
-        $this->appendCommonData($globalData);
-
-        // レイアウトに渡す値
-        //（オブジェクトにすることで参照渡しになるので、$nameのテンプレートからレイアウトに値を渡せる）
-        $layoutOptions = new \stdClass;
-
-        $data[self::KEY_LAYOUT_OPTIONS] = $layoutOptions;
-
-        $val = $this->render($name, $data);
-
-        if ($layout) {
-            // レイアウトの指定があるとき
-
-            $val = $this->render($layout, [
-                self::KEY_LAYOUT_CONTENT => $val,
-                self::KEY_LAYOUT_OPTIONS => $data[self::KEY_LAYOUT_OPTIONS],
-            ] + $layoutData);
-        }
-
-        return $val;
-    }
-
-    /** フレームワークで使うview */
-    public static function fwView(): self
-    {
-        $view = new self();
-
-        $view->setBaseDir(dirname(dirname(__DIR__)) . '/views');
-
-        return $view;
-    }
-
-    /** エラー画面で使うview */
-    public static function errorView(): self
-    {
-        $view = Config::get('debug') ? self::fwView() : new self();
-
-        return $view;
     }
 }

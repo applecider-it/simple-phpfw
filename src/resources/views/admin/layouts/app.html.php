@@ -1,6 +1,6 @@
 <?php
 
-use SFW\Output\View;
+use SFW\Output\View\Layout;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -13,11 +13,11 @@ use SFW\Output\View;
     <?= $this->render('admin.layouts.partials.common') ?>
     <?= $this->render('admin.layouts.partials.nav') ?>
     <?= $this->render('admin.layouts.partials.breadcrumbs', [
-        'breadcrumbs' => $data[View::KEY_LAYOUT_OPTIONS]->breadcrumbs ?? null,
+        'breadcrumbs' => $data[Layout::KEY_LAYOUT_OPTIONS]->breadcrumbs ?? null,
     ]) ?>
 
     <main class="app-layout-main">
-        <?= $data[View::KEY_LAYOUT_CONTENT] ?? '' ?>
+        <?= $data[Layout::KEY_LAYOUT_CONTENT] ?? '' ?>
     </main>
 
     <?= $this->render('admin.layouts.partials.footer') ?>

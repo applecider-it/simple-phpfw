@@ -1,6 +1,6 @@
 <?php
 
-use SFW\Output\View;
+use SFW\Output\View\Layout;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -14,7 +14,7 @@ use SFW\Output\View;
     <?= $this->render('layouts.partials.nav') ?>
 
     <main class="app-layout-main">
-        <?= $data[View::KEY_LAYOUT_CONTENT] ?? '' ?>
+        <?= $data[Layout::KEY_LAYOUT_CONTENT] ?? '' ?>
     </main>
 
     <?= $this->render('layouts.partials.footer') ?>

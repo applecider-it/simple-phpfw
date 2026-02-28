@@ -51,7 +51,8 @@ abstract class Controller extends BaseController
 
         if ($layout === 'controller-layout') $layout = $this->layout;
 
-        return $view->renderWithLayout(
+        return View\Layout::renderWithLayout(
+            $view,
             $name,
             $data,
             $layout,

@@ -1,9 +1,9 @@
 <?php
 
-use SFW\Output\View;
+use SFW\Output\View\Layout;
 use function SFW\Helpers\route;
 
-$data[View::KEY_LAYOUT_OPTIONS]->breadcrumbs = ['admin.users.create'];
+$data[Layout::KEY_LAYOUT_OPTIONS]->breadcrumbs = ['admin.users.create'];
 
 $data['exists'] = false;
 ?>

@@ -1,9 +1,9 @@
 <?php
 
-use SFW\Output\View;
+use SFW\Output\View\Layout;
 use function SFW\Helpers\route;
 
-$data[View::KEY_LAYOUT_OPTIONS]->breadcrumbs = ['admin.users.index'];
+$data[Layout::KEY_LAYOUT_OPTIONS]->breadcrumbs = ['admin.users.index'];
 ?>
 <h2 class="app-h2">admin.user.index</h2>
 
