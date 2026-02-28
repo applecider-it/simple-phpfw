@@ -1,7 +1,8 @@
 <?php
 
 use SFW\Core\Config;
-use SFW\Output\Html;
+use function SFW\Helpers\html_esc as h;
+use function SFW\Helpers\route;
 use App\Services\User\AuthService as Auth;
 
 $user = Auth::get();
@@ -10,20 +11,20 @@ $user = Auth::get();
     <h1 class="app-h1"><?= Config::get('applicationName') ?></h1>
     <div class="app-layout-nav-menu-container">
         <div>
-            <a href="/">Home</a>
+            <a href="<?= route('index') ?>">Home</a>
             <a href="/tweets">Tweet</a>
             <a href="/tweets_js">Tweet(JS)</a>
             <a href="/chat">Chat</a>
         </div>
         <div>
             <?php if ($user): ?>
-                (Name: <?= Html::esc($user['name']) ?>)
-                <a href="/logout" onclick="if (confirm('ログアウトしますか？')) document.getElementById('app_nav_logout_form').submit(); return false; ">Logout</a>
-                <form method="POST" action="/logout" id="app_nav_logout_form">
+                (Name: <?= h($user['name']) ?>)
+                <a href="<?= route('logout') ?>" onclick="if (confirm('ログアウトしますか？')) document.getElementById('app_nav_logout_form').submit(); return false; ">Logout</a>
+                <form method="POST" action="<?= route('logout') ?>" id="app_nav_logout_form">
                     <?= $this->render('partials.form.csrf') ?>
                 </form>
             <?php else: ?>
-                <a href="/login">Login</a>
+                <a href="<?= route('login') ?>">Login</a>
             <?php endif ?>
         </div>
     </div>

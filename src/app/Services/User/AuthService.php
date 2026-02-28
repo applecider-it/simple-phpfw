@@ -2,6 +2,8 @@
 
 namespace App\Services\User;
 
+use function SFW\Helpers\route;
+
 use App\Models\User;
 
 use App\Services\Auth\BaseService;
@@ -18,9 +20,9 @@ class AuthService extends BaseService
 
     public function __construct()
     {
-        $this->loginUrl = '/login';
-        $this->afterLoginUrl = '/';
-        $this->afterLogoutUrl = '/';
+        $this->loginUrl = route('login');
+        $this->afterLoginUrl = route('index');
+        $this->afterLogoutUrl = route('index');
         $this->model = User::class;
     }
 }

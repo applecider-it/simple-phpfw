@@ -13,7 +13,7 @@ use App\Controllers\ChatController;
 use App\Controllers\DevelopmentController;
 
 // トップページ
-$router->get('/', [HomeController::class, 'index']);
+$router->get('/', [HomeController::class, 'index'], ['name' => 'index']);
 
 // チャット
 $router->get('/chat', [ChatController::class, 'index'], ['auth' => 'user']);

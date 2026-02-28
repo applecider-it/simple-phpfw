@@ -1,7 +1,7 @@
 <?php
 
 use SFW\Core\Config;
-use SFW\Output\Html;
+use function SFW\Helpers\html_esc as h;
 use function SFW\Helpers\route;
 use App\Services\AdminUser\AuthService as Auth;
 
@@ -16,7 +16,7 @@ $adminUser = Auth::get();
         </div>
         <div>
             <?php if ($adminUser): ?>
-                (Name: <?= Html::esc($adminUser['name']) ?>)
+                (Name: <?= h($adminUser['name']) ?>)
                 <a href="<?= route('admin.logout') ?>" onclick="if (confirm('ログアウトしますか？')) document.getElementById('app_nav_logout_form').submit(); return false; ">Logout</a>
                 <form method="POST" action="<?= route('admin.logout') ?>" id="app_nav_logout_form">
                     <?= $this->render('partials.form.csrf') ?>

@@ -2,7 +2,6 @@
 
 namespace App\Services\AdminUser;
 
-use SFW\Core\Config;
 use function SFW\Helpers\route;
 
 use App\Models\AdminUser;
