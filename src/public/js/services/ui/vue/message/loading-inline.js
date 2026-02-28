@@ -17,8 +17,7 @@ const LoadingInline = {
         height: "12px",
         backgroundColor: "#6b7280",
         borderRadius: "9999px",
-        animation:
-          idPrefix + "__bounce 1s infinite",
+        animation: idPrefix + "__bounce 1s infinite",
       },
     };
   },
@@ -34,6 +33,7 @@ const LoadingInline = {
         opacity: 0,
         animation:
           idPrefix + "__fadeInAccel 3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        animationDelay: "1s",
       };
     },
 
