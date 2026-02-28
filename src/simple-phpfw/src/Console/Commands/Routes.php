@@ -20,7 +20,7 @@ class Routes extends Command
     public static string $desc = 'ルート一覧';
 
     /** コマンド説明の詳細 */
-    public static string $descDetail = '--op をつけると、optionsも含めて表示。';
+    public static string $descDetail = '--op をつけると、name以外のoptionsも含めて表示。';
 
     /** ハンドル */
     public function handle()
