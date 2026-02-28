@@ -26,8 +26,8 @@ $commonList = [
     '@/outer/vue3' => "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js?{$filePostfix}",
 ];
 
-// サイト用
-$siteList = [
+// アプリケーション用
+$appList = [
     // アプリケーションメイン
     '@/services/app/setup-app' => "/js/services/app/setup-app.js?{$filePostfix}",
 
@@ -59,8 +59,8 @@ $adminList = [
 ];
 
 return [
-    'site' => [
-        'imports' => $siteList + $commonList,
+    'app' => [
+        'imports' => $appList + $commonList,
     ],
     'admin' => [
         'imports' => $adminList + $commonList,
