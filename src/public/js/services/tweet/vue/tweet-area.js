@@ -1,4 +1,5 @@
 import { showToast, setIsLoading } from "@/services/ui/message";
+import LoadingInline from "@/services/ui/vue/message/loading-inline";
 
 const TweetArea = {
   template: `
@@ -18,32 +19,40 @@ const TweetArea = {
         <button type="submit" class="app-btn-primary" style="margin-top: 1rem;">Tweet</button>
     </form>
 
-    <!-- 一覧 -->
-    <div style="display:flex; flex-direction:column; gap:1rem; margin-top: 2rem;">
-        <div
-            v-for="tweet in tweets"
-            :key="tweet.id"
-            style="border: 1px solid #ddd; border-radius: 5px; padding: 1rem;"
-        >
-            <div>
-                {{ tweet.content }}
-            </div>
+    <div v-if="isInit">
+      <!-- 一覧 -->
+      <div style="display:flex; flex-direction:column; gap:1rem; margin-top: 2rem;">
+          <div
+              v-for="tweet in tweets"
+              :key="tweet.id"
+              style="border: 1px solid #ddd; border-radius: 5px; padding: 1rem;"
+          >
+              <div>
+                  {{ tweet.content }}
+              </div>
 
-            <div style="font-size: 0.7rem;">
-                by {{ tweet.user.name }} -
-                {{ new Date(tweet.created_at).toLocaleString() }}
-            </div>
-        </div>
+              <div style="font-size: 0.7rem; margin-top: 0.5rem; text-align: right;">
+                  by {{ tweet.user.name }} -
+                  {{ new Date(tweet.created_at).toLocaleString() }}
+              </div>
+          </div>
+      </div>
+    </div>
+    <div v-else>
+      <LoadingInline />
     </div>
   `,
 
   props: ["tweetClient"],
+
+  components: { LoadingInline },
 
   data() {
     return {
       tweets: [],
       content: "",
       errors: {},
+      isInit: false,
     };
   },
 
@@ -78,11 +87,18 @@ const TweetArea = {
 
       this.tweets = result.tweets;
     },
+
+    /** ツイート一覧初期化 */
+    async initList() {
+      await this.refreshList();
+
+      this.isInit = true;
+    },
   },
 
   /** マウント時 */
   async mounted() {
-    this.refreshList();
+    this.initList();
 
     this.tweetClient.refreshList = () => this.refreshList();
   },
