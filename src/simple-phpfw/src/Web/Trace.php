@@ -8,6 +8,7 @@ use SFW\Core\App;
 use SFW\Core\Config;
 use SFW\Output\StdOut;
 use SFW\Output\Log;
+use SFW\Data\Arr;
 
 /**
  * トレース管理
@@ -25,20 +26,29 @@ class Trace
             '',
             'Path',
             'Handler',
+            'Option (Name)',
         ];
 
-        if ($includeOptions) $header[] = 'Options';
+        if ($includeOptions) $header[] = 'Other Options';
 
         $rows = [];
         foreach ($routes as $method => $methodRoutes) {
             foreach ($methodRoutes as $route) {
+                $name = $route['options']['name'] ?? '';
                 $row = [
                     'method' => $method,
                     'path' => $route['path'],
                     'handler' => implode('::', $route['handler']),
+                    'name' => $name,
                 ];
 
-                if ($includeOptions) $row['options'] = json_encode($route['options'], JSON_UNESCAPED_UNICODE);
+                if ($includeOptions) {
+                    $row['options'] =
+                        json_encode(
+                            Arr::exclude($route['options'], ['name']),
+                            JSON_UNESCAPED_UNICODE
+                        );
+                }
 
                 $rows[] = $row;
             }

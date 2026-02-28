@@ -11,11 +11,14 @@ use SFW\Core\Config;
  */
 class View
 {
-    /** テンプレートファイルのポストフィックス */
-    private const FILE_POSTFIX = '.html.php';
-
     /** レイアウトに渡すデータのキー */
     public const KEY_LAYOUT_OPTIONS = '___SFW_LAYOUT_OPTIONS';
+
+    /** レイアウトコンテンツのキー */
+    public const KEY_LAYOUT_CONTENT = '___SFW_LAYOUT_CONTENT';
+
+    /** テンプレートファイルのポストフィックス */
+    private const FILE_POSTFIX = '.html.php';
 
     /** 基準となるディレクトリパス。nullだとresources/viewsになる。 */
     private ?string $baseDir = null;
@@ -103,7 +106,7 @@ class View
             // レイアウトの指定があるとき
 
             $val = $this->render($layout, [
-                'content' => $val,
+                self::KEY_LAYOUT_CONTENT => $val,
                 self::KEY_LAYOUT_OPTIONS => $data[self::KEY_LAYOUT_OPTIONS],
             ] + $layoutData);
         }

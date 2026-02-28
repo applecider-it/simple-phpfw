@@ -10,6 +10,6 @@ use App\Controllers\Admin\Auth\SessionController;
 
 $basePrefix = Config::get('app.adminPrefix');
 
-$router->get($basePrefix . '/login', [SessionController::class, 'login']);
+$router->get($basePrefix . '/login', [SessionController::class, 'login'], ['name' => 'admin.login']);
 $router->post($basePrefix . '/login', [SessionController::class, 'post']);
-$router->post($basePrefix . '/logout', [SessionController::class, 'logout']);
+$router->post($basePrefix . '/logout', [SessionController::class, 'logout'], ['name' => 'admin.logout']);

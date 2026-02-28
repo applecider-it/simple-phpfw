@@ -17,7 +17,7 @@ use SFW\Output\View;
     ]) ?>
 
     <main class="app-layout-main">
-        <?= $data['content'] ?? '' ?>
+        <?= $data[View::KEY_LAYOUT_CONTENT] ?? '' ?>
     </main>
 
     <?= $this->render('admin.layouts.partials.footer') ?>
