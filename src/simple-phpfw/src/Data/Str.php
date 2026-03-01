@@ -81,6 +81,8 @@ class Str
     /** 全角スペースを含めてtrim */
     public static function trimAll(string $text): string
     {
-        return preg_replace('/^[\s　]+|[\s　]+$/u', '', $text);
+        $s = "\x0B\xE3\x80\x80";
+        $allSpace = '[\s' . $s . ']+';
+        return preg_replace('/^' . $allSpace . '|' . $allSpace . '$/u', '', $text);
     }
 }
