@@ -1,3 +1,7 @@
+<?php
+
+use SFW\Output\View\Layout;
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -12,7 +16,7 @@
     <div>layouts.render_test</div>
 
     <main class="app-layout-main">
-        <?= $data['content'] ?? '' ?>
+        <?= $data[Layout::KEY_LAYOUT_CONTENT] ?? '' ?>
     </main>
 </body>
 
