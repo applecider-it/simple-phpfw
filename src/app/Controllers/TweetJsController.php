@@ -6,6 +6,7 @@ use SFW\Core\App;
 use SFW\Data\Arr;
 use SFW\Core\Lang;
 use SFW\Output\Log;
+use SFW\Web\Response;
 
 use App\Services\WebSocket\AuthService;
 use App\Services\Channels\TweetChannel;
@@ -70,10 +71,9 @@ class TweetJsController extends Controller
         if ($v->fails()) {
             // エラーがあるとき
 
-            http_response_code(422);
-
             $errors = $v->errors();
 
+            Response::code(422);
             return compact('errors');
         }
 
