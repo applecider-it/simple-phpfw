@@ -57,6 +57,8 @@ class Dispatcher
      */
     private function runHandler($requestMethod, array $route, array $urlParams): mixed
     {
+        $headers = getallheaders();
+
         $options = $route['options'];
 
         /** @var boolean セッションを利用しないときはtrue */
@@ -82,6 +84,8 @@ class Dispatcher
 
         App::get('callback')->afterRequest($params);
 
+        $csrfToken = $headers['X-CSRF-TOKEN'] ?? ($params['csrf_token'] ?? '');
+
         if (! $nosession) {
             // セッションを利用する時
 
@@ -101,7 +105,7 @@ class Dispatcher
             } else {
                 // POSTメソッドの時
 
-                Csrf::check($params['csrf_token'] ?? '');
+                Csrf::check($csrfToken);
             }
         }
 

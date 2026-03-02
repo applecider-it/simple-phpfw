@@ -1,5 +1,5 @@
 import { showToast } from "@/services/ui/message";
-import { sendData } from "@/services/data/json";
+import { sendData } from "@/services/api/rest";
 
 /**
  * ツイートクライアント

@@ -45,6 +45,12 @@ class Callback
 
         Log::info('afterRequest: route: ', App::get('router')->currentRoute());
         Log::info('afterRequest: params: ', Arr::maskRecursive($params, Config::get('app.trace_mask_keys')));
+
+        $headers = getallheaders();
+        Log::info('afterRequest: headers: ', Arr::maskRecursive(
+            $headers,
+            ['Cookie', 'User-Agent', 'sec-ch-ua', 'sec-ch-ua-mobile', 'sec-ch-ua-platform', 'X-CSRF-TOKEN']
+        ));
     }
 
     /** セッションスタート直後 */

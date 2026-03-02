@@ -11,6 +11,7 @@ $commonList = [
     '@/services/app/vue/app-common' => "/js/services/app/vue/app-common.js?{$filePostfix}",
 
     // 共通部分
+    '@/services/api/rest' => "/js/services/api/rest.js?{$filePostfix}",
     '@/services/data/json' => "/js/services/data/json.js?{$filePostfix}",
     '@/services/data/html' => "/js/services/data/html.js?{$filePostfix}",
 

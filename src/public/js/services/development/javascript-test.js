@@ -1,4 +1,4 @@
-import { toQueryString, sendData } from "@/services/data/json";
+import { toQueryString, sendData } from "@/services/api/rest";
 
 /**
  * Javascriptテスト用クラス
