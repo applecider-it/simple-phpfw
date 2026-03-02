@@ -70,6 +70,8 @@ class TweetJsController extends Controller
         if ($v->fails()) {
             // エラーがあるとき
 
+            http_response_code(422);
+
             $errors = $v->errors();
 
             return compact('errors');

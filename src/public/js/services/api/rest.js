@@ -32,6 +32,14 @@ export async function sendData(method, url, argData = {}) {
   // JSONとして受け取る
   const result = await res.json();
 
+  if (!res.ok) {
+    const error = new Error(`http status code: ${res.status}`);
+    error.status = res.status;
+    error.result = result;
+
+    throw error;
+  }
+
   return result;
 }
 

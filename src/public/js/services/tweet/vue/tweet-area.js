@@ -24,17 +24,20 @@ const TweetArea = {
 
       setIsLoading(true);
 
-      const result = await this.tweetClient.storeTweet(this.content);
+      try {
+        const result = await this.tweetClient.storeTweet(this.content);
+        console.log(result);
 
-      setIsLoading(false);
+        setIsLoading(false);
 
-      console.log(result);
-
-      if ("errors" in result) {
-        this.errors = result.errors;
-      } else {
         this.content = "";
         showToast("ツイートしました。");
+      } catch (e) {
+        if (e.status === 422) {
+          setIsLoading(false);
+
+          this.errors = e.result.errors;
+        }
       }
     },
 
