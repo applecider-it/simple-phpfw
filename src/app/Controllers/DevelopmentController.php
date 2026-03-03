@@ -9,6 +9,7 @@ use SFW\Data\Json;
 use App\Services\Sample\SampleService;
 use App\Services\Development\DatabaseService;
 use App\Services\Development\ValidationService;
+use App\Services\Development\FormService;
 use App\Services\User\AuthService as Auth;
 
 use App\Validations\Validator;
@@ -27,7 +28,7 @@ class DevelopmentController extends Controller
     /** viewのテスト */
     public function view_test()
     {
-        return $this->render('development.view_test', $this->view_test_common());
+        return $this->render('development.view_test', $this->formData());
     }
     public function view_test_post()
     {
@@ -38,30 +39,13 @@ class DevelopmentController extends Controller
                 'radio_val' => $this->params['radio_val'],
                 'datetime_val' => $this->params['datetime_val'],
             ]
-                + $this->view_test_common()
+                + $this->formData()
         );
     }
-    private function view_test_common()
+    private function formData()
     {
-        $list_val = 2;
-        $radio_val = 'val2';
-        $datetime_val = '2026-02-15T14:30';
-        $list_vals = [
-            1 => 'No. 1',
-            2 => 'No. 2',
-            3 => 'No. 3',
-        ];
-        $radio_vals = [
-            'val1' => 'Value 1',
-            'val2' => 'Value 2',
-        ];
-        return compact(
-            'list_val',
-            'radio_val',
-            'datetime_val',
-            'list_vals',
-            'radio_vals'
-        );
+        $formService = new FormService;
+        return $formService->formData();
     }
 
     /** renderのテスト */
@@ -133,7 +117,7 @@ class DevelopmentController extends Controller
     {
         return $this->render(
             'development.javascript_test',
-            ['formData' => $this->view_test_common()]
+            ['formData' => $this->formData()]
         );
     }
 
