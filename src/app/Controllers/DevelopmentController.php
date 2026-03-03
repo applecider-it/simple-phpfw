@@ -30,6 +30,8 @@ class DevelopmentController extends Controller
     {
         return $this->render('development.view_test', $this->formData());
     }
+
+    /** viewのテスト(POST処理) */
     public function view_test_post()
     {
         return $this->render(
@@ -41,11 +43,6 @@ class DevelopmentController extends Controller
             ]
                 + $this->formData()
         );
-    }
-    private function formData()
-    {
-        $formService = new FormService;
-        return $formService->formData();
     }
 
     /** renderのテスト */
@@ -179,5 +176,11 @@ class DevelopmentController extends Controller
         Log::info('コンテナデータ' . Json::trace($all, true));
 
         return $this->render('development.complate');
+    }
+
+    private function formData()
+    {
+        $formService = new FormService;
+        return $formService->formData();
     }
 }
