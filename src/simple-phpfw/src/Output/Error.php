@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace SFW\Output;
 
+use SFW\Web\Response;
+
 /**
  * エラー表示関連
  */
@@ -16,7 +18,7 @@ class Error
         echo $view->render('errors.error500', [
             'e' => $e,
         ]);
-        http_response_code(500);
+        Response::code(Response::CODE_INTERNAL_SERVER_ERROR);
     }
 
     /** 404エラー表示 */
@@ -26,6 +28,6 @@ class Error
         echo $view->render('errors.error404', [
             'e' => $e,
         ]);
-        http_response_code(404);
+        Response::code(Response::CODE_NOT_FOUND);
     }
 }

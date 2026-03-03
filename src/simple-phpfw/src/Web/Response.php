@@ -10,13 +10,19 @@ namespace SFW\Web;
 class Response
 {
     /** 処理できないエンティティ (入力エラー) */
-    public const int UNPROCESSABLE_ENTITY = 422;
+    public const int CODE_UNPROCESSABLE_ENTITY = 422;
+
+    /** インターナルサーバーエラー */
+    public const int CODE_INTERNAL_SERVER_ERROR = 500;
+
+    /** ページが見つからない */
+    public const int CODE_NOT_FOUND = 404;
 
     /** HTTPレスポンスコード */
     public static function code(int $code): void
     {
         $conf = [
-            self::UNPROCESSABLE_ENTITY => 'Unprocessable Entity',
+            self::CODE_UNPROCESSABLE_ENTITY => 'Unprocessable Entity',
         ];
 
         if (isset($conf[$code])) {
