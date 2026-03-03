@@ -2,32 +2,7 @@
  * アプリケーションのセットアップ
  */
 
-import { createApp } from "@/outer/vue3";
+import "@/services/app/bootstrap/app";
+import "@/services/app/bootstrap/menu";
 
-import AppCommon from "@/services/app/vue/app-common";
-import { getAuthUser } from "@/services/app/application";
-
-/** 共通コンテナをセットアップする */
-function setupContainerCommon() {
-  const el = document.getElementById("app-container-common");
-  if (el) {
-    createApp(AppCommon).mount(el);
-  }
-}
-
-/** メニューをセットアップする */
-function setupMenu() {
-  const btn = document.getElementById("app-nav-mobile-menu-button");
-  const area = document.getElementById("app-nav-mobile-menu-area");
-
-  if (btn && area) {
-    btn.addEventListener("click", () => {
-      area.classList.toggle("app-layout-nav-responsive-links__open");
-    });
-  }
-}
-
-setupContainerCommon();
-setupMenu();
-
-console.log("getAuthUser", getAuthUser());
+console.log("init app");

@@ -2,22 +2,9 @@
  * 管理画面のセットアップ
  */
 
-import { createApp } from "@/outer/vue3";
+import "@/services/app/bootstrap/app";
 
-import AppCommon from "@/services/app/vue/app-common";
-import { getAuthUser } from "@/services/app/application";
-
-/** 共通コンテナをセットアップする */
-function setupContainerCommon() {
-  const el = document.getElementById("app-container-common");
-  if (el) {
-    createApp(AppCommon).mount(el);
-  }
-}
-
-setupContainerCommon();
-
-console.log("getAuthAdminUser", getAuthUser());
+console.log("init admin");
 
 /*
 // UI動作確認

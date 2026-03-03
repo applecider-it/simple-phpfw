@@ -8,6 +8,8 @@
 $commonList = [
     // アプリケーションメイン
     '@/services/app/application' => "/js/services/app/application.js?{$filePostfix}",
+    '@/services/app/bootstrap/app' => "/js/services/app/bootstrap/app.js?{$filePostfix}",
+    '@/services/app/bootstrap/menu' => "/js/services/app/bootstrap/menu.js?{$filePostfix}",
     '@/services/app/vue/app-common' => "/js/services/app/vue/app-common.js?{$filePostfix}",
 
     // 共通部分
