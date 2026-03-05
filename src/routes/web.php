@@ -66,13 +66,13 @@ $router->get('/chat', [ChatController::class, 'index'], ['auth' => 'user']);
 
 // 別ファイルにしているルート読み込み
 (function ($router) {
-    include(__DIR__ . '/_auth.php');
+    include(__DIR__ . '/web/auth.php');
 })($router);
 
 (function ($router) {
-    include(__DIR__ . '/_admin.php');
+    include(__DIR__ . '/web/admin.php');
 })($router);
 
 (function ($router) {
-    include(__DIR__ . '/_admin_auth.php');
+    include(__DIR__ . '/web/admin_auth.php');
 })($router);
