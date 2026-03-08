@@ -1,6 +1,12 @@
 
 cd /home/owner/workspace/tmp/simple_phpfw/src
 
+-----------------------------------
+
+port
+
+php: 9000
+websocket: 9090
 
 -----------------------------------
 
