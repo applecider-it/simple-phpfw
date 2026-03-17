@@ -55,7 +55,7 @@ class Info
         foreach (self::FILE_TYPES as $type) {
             $path = $baseDir . '/' . str_replace('.', '/', $name) . '.' . $type . '.php';
             if (file_exists($path)) {
-                return compact('type') + $this->createTemplate($path, $type);
+                return compact('type') + $this->getPathInfo($path, $type);
             }
         }
 
@@ -63,12 +63,12 @@ class Info
     }
 
     /**
-     * テンプレートを作成
+     * パス情報を返す
      */
-    private function createTemplate(string $path, string $type): ?array
+    private function getPathInfo(string $path, string $type): ?array
     {
         if ($type === 'sfw') {
-            return $this->SfwTemplate->createTemplate($path);
+            return $this->SfwTemplate->getPathInfo($path);
         }
 
         return compact('path');

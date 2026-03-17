@@ -1,7 +1,4 @@
 <?php
-
-use function SFW\Helpers\html_esc as h;
-
 /** @var string meta情報用Style */
 $metaStyle = implode(
     ';',
@@ -32,11 +29,11 @@ $metaStyle = implode(
         </div>
     </div>
 
-    <div style="<?= h($metaStyle) ?>">
-        <div>$meta['name']: <?= h($meta['name']) ?></div>
-        <div>$meta['baseDir']: <?= h($meta['baseDir']) ?></div>
-        <div>$meta['path']: <?= h($meta['path']) ?></div>
-        <div>$meta['srcPath']: <?= h($meta['srcPath']) ?></div>
-        <div>$meta['type']: <?= h($meta['type']) ?></div>
+    <div style="{{ $metaStyle }}">
+        <div>$meta['name']: {{ $meta['name'] }}</div>
+        <div>$meta['baseDir']: {{ $meta['baseDir'] }}</div>
+        <div>$meta['path']: {{ $meta['path'] }}</div>
+        <div>$meta['srcPath']: {{ $meta['srcPath'] }}</div>
+        <div>$meta['type']: {{ $meta['type'] }}</div>
     </div>
 </div>
