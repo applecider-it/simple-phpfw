@@ -35,6 +35,7 @@ $metaStyle = implode(
         <div>$meta['name']: <?= h($meta['name']) ?></div>
         <div>$meta['baseDir']: <?= h($meta['baseDir']) ?></div>
         <div>$meta['path']: <?= h($meta['path']) ?></div>
+        <div>$meta['type']: <?= h($meta['type']) ?></div>
     </div>
 
     <div>$this->data['id'] <?= h($this->data['id']) ?></div>
@@ -54,6 +55,7 @@ $metaStyle = implode(
         <div>$meta['name']: <?= h($meta['name']) ?></div>
         <div>$meta['baseDir']: <?= h($meta['baseDir']) ?></div>
         <div>$meta['path']: <?= h($meta['path']) ?></div>
+        <div>$meta['type']: <?= h($meta['type']) ?></div>
     </div>
 
     <div style="<?= h($partialStyle) ?>">
@@ -68,5 +70,6 @@ $metaStyle = implode(
         <div>$meta['name']: <?= h($meta['name']) ?></div>
         <div>$meta['baseDir']: <?= h($meta['baseDir']) ?></div>
         <div>$meta['path']: <?= h($meta['path']) ?></div>
+        <div>$meta['type']: <?= h($meta['type']) ?></div>
     </div>
 </div>

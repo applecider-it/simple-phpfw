@@ -4,39 +4,31 @@ declare(strict_types=1);
 
 namespace SFW\Output;
 
-use SFW\Core\Config;
-
 /**
  * View管理
  */
 class View
 {
-    /** テンプレートファイルのポストフィックス */
-    private const FILE_POSTFIX = '.html.php';
-
     /** 基準となるディレクトリパス。nullだとresources/viewsになる。 */
     private ?string $baseDir = null;
 
     /** 共通変数 */
     private array $data = [];
 
+    /** View情報管理 */
+    private View\Info $info;
+
+    function __construct()
+    {
+        $this->info = new View\Info($this);
+    }
+
     /**
      * 描画して文字列を返す
      */
     public function render(string $name, array $data = []): string
     {
-        $baseDir = $this->baseDir ?? SFW_PROJECT_ROOT . '/resources/views';
-        $path = $baseDir . '/' . str_replace('.', '/', $name) . self::FILE_POSTFIX;
-
-        if (!file_exists($path)) {
-            throw new \Exception("View not found: $name. path: $path.");
-        }
-
-        $meta = [
-            'name' => $name,
-            'baseDir' => $baseDir,
-            'path' => $path,
-        ];
+        $meta = $this->info->renderInfo($name);
 
         return $this->includeTemplate($meta, $data);
     }
@@ -66,6 +58,14 @@ class View
     public function setBaseDir(string $baseDir): void
     {
         $this->baseDir = $baseDir;
+    }
+
+    /**
+     * 基準となるディレクトリパス
+     */
+    public function baseDir(): ?string
+    {
+        return $this->baseDir;
     }
 
     /**

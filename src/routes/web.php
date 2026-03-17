@@ -50,6 +50,7 @@ $router->get('/chat', [ChatController::class, 'index'], ['auth' => 'user']);
     $router->get($prefix . '/view_test', [$controller, 'view_test']);
     $router->post($prefix . '/view_test_post', [$controller, 'view_test_post']);
     $router->get($prefix . '/render_test', [$controller, 'render_test']);
+    $router->get($prefix . '/template_test', [$controller, 'template_test']);
     $router->get($prefix . '/param_test/{id}', [$controller, 'param_test']);
     $router->post($prefix . '/param_test/{id}', [$controller, 'param_test']);
     $router->get($prefix . '/database_test', [$controller, 'database_test']);

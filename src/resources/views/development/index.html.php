@@ -9,6 +9,7 @@
 
     <div>
         <div><a href="/development/render_test" class="app-link-normal">render_test</a></div>
+        <div><a href="/development/template_test" class="app-link-normal">template_test</a></div>
         <div><a href="/development/param_test/321?val1=abc" class="app-link-normal">param_test</a></div>
         <div><a href="/development/database_test" class="app-link-normal">database_test</a></div>
         <div><a href="/development/validation_test" class="app-link-normal">validation_test</a></div>

@@ -63,6 +63,14 @@ class DevelopmentController extends Controller
         );
     }
 
+    /** templateのテスト */
+    public function template_test()
+    {
+        return $this->render('development.template_test', [
+            'val1' => '<div>abc</div>',
+        ]);
+    }
+
     /** パラメーターテスト */
     public function param_test()
     {
