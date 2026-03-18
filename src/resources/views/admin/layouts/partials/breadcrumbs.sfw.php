@@ -2,9 +2,9 @@
 
 use SFW\Core\App;
 ?>
-<?php if (isset($data['breadcrumbs'])): ?>
+<?php if (isset($breadcrumbs)): ?>
     <?php
-    $arr = App::get('breadcrumbs')->get(...$data['breadcrumbs']);
+    $arr = App::get('breadcrumbs')->get(...$breadcrumbs);
     ?>
 
     <div style="padding: 1rem;">

@@ -10,7 +10,7 @@ $adminUser = Auth::get();
 
 <?= $this->render('partials.form.csrf_meta') ?>
 
-<title>{{ $data['title'] ?? Config::get('applicationName') }} Admin</title>
+<title>{{ $title ?? Config::get('applicationName') }}</title>
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
