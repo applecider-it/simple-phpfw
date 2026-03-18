@@ -38,7 +38,19 @@ class View
      */
     private function includeTemplate(array $meta, array $data): string
     {
-        // $dataはインクルード先で利用している
+        // 変数を退避
+        $___sfw__view__keep = [
+            'meta' => $meta,
+            'data' => $data,
+        ];
+
+        // 変数を展開
+        extract($data);
+
+        // 戻す
+        // $data, $meta変数は上書きされるので注意！
+        $data = $___sfw__view__keep['data'];
+        $meta = $___sfw__view__keep['meta'];
 
         ob_start();
         try {

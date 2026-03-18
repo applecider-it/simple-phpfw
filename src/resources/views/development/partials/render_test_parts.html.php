@@ -16,3 +16,5 @@ $metaStyle = $data['metaStyle'];
 <div>$this->data['id'] <?= h($this->data['id']) ?></div>
 <div>$data['id'] <?= h($data['id'] ?? 'none') ?></div>
 <div>$data['val1'] <?= h($data['val1']) ?></div>
+<div>$id <?= h($id ?? 'none') ?></div>
+<div>$val1 <?= h($val1) ?></div>
