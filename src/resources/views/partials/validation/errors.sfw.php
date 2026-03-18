@@ -1,8 +1,4 @@
-<?php
-
-use SFW\Output\Html;
-?>
-<?php if (!empty($data['errors'])): ?>
+<?php if (!empty($errors)): ?>
     <div style="
         border-left: 6px solid #e74c3c;
         background-color: #fdecea;
@@ -18,9 +14,9 @@ use SFW\Output\Html;
             ⚠ エラー発生
         </strong>
         <ul style="margin-top:0.5rem; padding-left: 1.2rem;">
-            <?php foreach ($data['errors'] as $arr): ?>
+            <?php foreach ($errors as $arr): ?>
                 <?php foreach ($arr as $val): ?>
-                    <li><?= Html::esc($val) ?></li>
+                    <li>{{ $val }}</li>
                 <?php endforeach; ?>
             <?php endforeach; ?>
         </ul>

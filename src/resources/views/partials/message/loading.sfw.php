@@ -42,14 +42,14 @@ $styleAnimation = "
   <?= $styleAnimation ?>
 </style>
 
-<div class="<?= $idPrefix ?>" style="<?= $styleContainer ?>">
+<div class="{{ $idPrefix }}" style="<?= $styleContainer ?>">
   <div style="<?= $styleSpinner ?>"></div>
   <div>読み込み中…</div>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.<?= $idPrefix ?>').forEach((el) => {
+    document.querySelectorAll('.{{ $idPrefix }}').forEach((el) => {
       setTimeout(() => {
         el.style.opacity = '1';
       }, 1000);
