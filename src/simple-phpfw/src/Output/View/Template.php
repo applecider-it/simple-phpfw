@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace SFW\Output\View;
 
 use SFW\Output\View;
+
 use SFW\Output\View\Template\SfwTemplate;
 
 /**
- * View情報管理
+ * テンプレート管理
  */
-class Info
+class Template
 {
     /** View管理 */
     private View $view;

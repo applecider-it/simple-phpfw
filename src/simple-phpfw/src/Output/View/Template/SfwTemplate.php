@@ -7,7 +7,7 @@ namespace SFW\Output\View\Template;
 /**
  * SFW用テンプレート管理
  */
-class SfwTemplate
+class SfwTemplate extends Base
 {
     /**
      * パス情報を返す
@@ -15,9 +15,9 @@ class SfwTemplate
     public function getPathInfo(string $path): ?array
     {
         /** @var string テンポラリーファイルパス */
-        $tmpPath = SFW_PROJECT_ROOT . '/storage/views/' . Util::tempFileName($path);
+        $tmpPath = SFW_PROJECT_ROOT . '/storage/views/' . $this->tempFileName($path);
 
-        $needGenerate = Util::checkGenarate($path, $tmpPath);
+        $needGenerate = $this->checkGenarate($path, $tmpPath);
 
         if ($needGenerate) {
             // テンポラリーファイル生成が必要な時

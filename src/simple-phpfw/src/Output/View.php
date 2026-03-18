@@ -15,12 +15,12 @@ class View
     /** 共通変数 */
     private array $data = [];
 
-    /** View情報管理 */
-    private View\Info $info;
+    /** テンプレート管理 */
+    private View\Template $template;
 
     function __construct()
     {
-        $this->info = new View\Info($this);
+        $this->template = new View\Template($this);
     }
 
     /**
@@ -28,7 +28,7 @@ class View
      */
     public function render(string $name, array $data = []): string
     {
-        $meta = $this->info->renderInfo($name);
+        $meta = $this->template->renderInfo($name);
 
         return $this->includeTemplate($meta, $data);
     }

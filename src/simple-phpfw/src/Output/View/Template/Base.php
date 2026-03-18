@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace SFW\Output\View\Template;
 
 /**
- * テンプレート管理用ユーティリティ
+ * テンプレートベース
  */
-class Util
+abstract class Base
 {
     /**
      * 生成が必要か返す
      */
-    public static function checkGenarate(string $path, string $tmpPath): bool
+    protected function checkGenarate(string $path, string $tmpPath): bool
     {
         if (!file_exists($tmpPath)) {
             // テンポラリーファイルがないとき
@@ -32,7 +32,7 @@ class Util
     /**
      * テンポラリーファイル名
      */
-    public static function tempFileName(string $path): string
+    protected function tempFileName(string $path): string
     {
         $name = basename($path);
         $dir = basename(dirname($path));
