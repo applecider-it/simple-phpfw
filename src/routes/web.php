@@ -16,7 +16,7 @@ use App\Controllers\DevelopmentController;
 $router->get('/', [HomeController::class, 'index'], ['name' => 'index']);
 
 // チャット
-$router->get('/chat', [ChatController::class, 'index'], ['auth' => 'user']);
+$router->get('/chat', [ChatController::class, 'index'], ['auth' => 'user', 'name' => 'chat.index']);
 
 // ツイート
 (function ($router) {
@@ -25,8 +25,8 @@ $router->get('/chat', [ChatController::class, 'index'], ['auth' => 'user']);
     $prefix = '/tweets';
     $controller = TweetController::class;
 
-    $router->get($prefix, [$controller, 'index'], $options);
-    $router->post($prefix, [$controller, 'store'], $options);
+    $router->get($prefix, [$controller, 'index'], $options + ['name' => 'tweets.index']);
+    $router->post($prefix, [$controller, 'store'], $options + ['name' => 'tweets.store']);
 })($router);
 
 // ツイートJS
@@ -36,7 +36,7 @@ $router->get('/chat', [ChatController::class, 'index'], ['auth' => 'user']);
     $prefix = '/tweets_js';
     $controller = TweetJsController::class;
 
-    $router->get($prefix, [$controller, 'index'], $options);
+    $router->get($prefix, [$controller, 'index'], $options + ['name' => 'tweets_js.index']);
     $router->get($prefix . '/list', [$controller, 'list'], $options);
     $router->post($prefix . '/store', [$controller, 'store'], $options);
 })($router);

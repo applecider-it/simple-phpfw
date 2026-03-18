@@ -10,6 +10,8 @@ use SFW\Web\Location;
 use SFW\Web\Flash;
 use SFW\Output\Log;
 
+use function SFW\Helpers\route;
+
 use App\Models\User;
 use App\Models\User\Tweet;
 
@@ -82,7 +84,7 @@ class TweetController extends Controller
 
         Flash::set('notice', '投稿しました。');
 
-        Location::redirect(Config::get('prefix') . "/tweets");
+        Location::redirect(route('tweets.index'));
     }
 
     /** 共通情報 */

@@ -2,14 +2,13 @@
 
 use SFW\Output\Html;
 use SFW\Core\Config;
-
-$prefix = Config::get('prefix');
+use function SFW\Helpers\route;
 ?>
 <h2 class="app-h2">tweet.index</h2>
 
 <div style="display:flex; flex-direction:column; gap:16px;">
     <div>
-        <form method="POST" action="<?= $prefix ?>/tweets">
+        <form method="POST" action="<?= route('tweets.index') ?>">
             <?= $this->render('partials.form.csrf') ?>
 
             <div style="margin-top: 1rem;">

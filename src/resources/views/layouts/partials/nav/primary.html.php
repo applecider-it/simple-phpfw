@@ -13,9 +13,9 @@ $prefix = Config::get('prefix');
         <div>
             <h1 class="app-h1"><?= Config::get('applicationName') ?></h1>
             <a href="<?= route('index') ?>">Home</a>
-            <a href="<?= $prefix ?>/tweets">Tweet</a>
-            <a href="<?= $prefix ?>/tweets_js">Tweet(JS)</a>
-            <a href="<?= $prefix ?>/chat">Chat</a>
+            <a href="<?= route('tweets.index') ?>">Tweet</a>
+            <a href="<?= route('tweets_js.index') ?>">Tweet(JS)</a>
+            <a href="<?= route('chat.index') ?>">Chat</a>
         </div>
         <div>
             <?php if ($user): ?>
