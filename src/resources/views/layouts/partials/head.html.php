@@ -20,9 +20,7 @@ $user = Auth::get();
     <meta name="user" data-json="<?= Html::esc(json_encode($user)) ?>">
 <?php endif; ?>
 
-<meta name="app" data-json="<?= Html::esc(json_encode([
-    'prefix' => Config::get('prefix'),
-])) ?>">
+<?= $this->render('partials.app.meta') ?>
 
 <script type="importmap"><?= json_encode(Config::get('app.importmap.app')) ?></script>
 <script type="module">

@@ -20,6 +20,8 @@ $adminUser = Auth::get();
     <meta name="admin-user" data-json="<?= Html::esc(json_encode($adminUser)) ?>">
 <?php endif; ?>
 
+<?= $this->render('partials.app.meta') ?>
+
 <script type="importmap"><?= json_encode(Config::get('app.importmap.admin')) ?></script>
 <script type="module">
     import "@/services/admin/app/setup-app";
