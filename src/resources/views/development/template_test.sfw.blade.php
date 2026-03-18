@@ -30,29 +30,34 @@ $codeStyle = implode(
 <h2 class="app-h2">development.template_test</h2>
 <div>
     <div>
-        <div>$data['val1']:</div>
-
         <div>
-            エスケープあり1:
-            {{ $data['val1'] }} - {{ $data['val2'] }} |
-            {{ $data['val2'] }} - {{ $data['val1'] }} |
+            エスケープあり1:<br />
+            {{ $data['val1'] }} - {{ $data['val2'] }}<br />
+            {{ $data['val2'] }} - {{ $data['val1'] }}<br />
+            {{ $val1 }} - {{ $val2 }}<br />
+            {{ $val2 }} - {{ $val1 }}<br />
         </div>
 
         <div>
-            エスケープあり2:
-            {{ $data['val1'] }} - {{ $data['val1'] }} |
-            {{ $data['val2'] }} - {{ $data['val2'] }} |
+            エスケープあり2:<br />
+            {{ $data['val1'] }} - {{ $data['val1'] }}<br />
+            {{ $data['val2'] }} - {{ $data['val2'] }}<br />
+            {{ $val1 }} - {{ $val1 }}<br />
+            {{ $val2 }} - {{ $val2 }}<br />
         </div>
 
         <div>
-            エスケープあり3:
-            {{ $data['val1'] }} - {{ $data['val2'] }} |
-            {{ $data['val1'] }} - {{ $data['val2'] }} |
+            エスケープあり3:<br />
+            {{ $data['val1'] }} - {{ $data['val2'] }}<br />
+            {{ $data['val1'] }} - {{ $data['val2'] }}<br />
+            {{ $val1 }} - {{ $val2 }}<br />
+            {{ $val1 }} - {{ $val2 }}<br />
         </div>
 
         <div>
-            エスケープなし:
-            <?= $data['val2'] ?> - <?= $data['val1'] ?>
+            エスケープなし:<br />
+            <?= $data['val2'] ?> - <?= $data['val1'] ?><br />
+            <?= $val2 ?> - <?= $val1 ?><br />
         </div>
     </div>
 
