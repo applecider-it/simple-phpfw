@@ -9,40 +9,6 @@ namespace SFW\Output\View\Template;
  */
 abstract class Base
 {
-    /**
-     * 生成が必要か返す
-     */
-    protected function checkGenarate(string $path, string $tmpPath): bool
-    {
-        if (!file_exists($tmpPath)) {
-            // テンポラリーファイルがないとき
-
-            return true;
-        }
-
-        if (filemtime($tmpPath) < filemtime($path)) {
-            // テンポラリーファイルより、ソースファイルの更新日時が新しいとき
-
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * テンポラリーファイル名
-     */
-    protected function tempFileName(string $path): string
-    {
-        $name = basename($path);
-        $dir = basename(dirname($path));
-
-        $info = pathinfo($name);
-        $fileName = $info['filename'];
-        $extension  = $info['extension'];
-
-        $tempFileName = $dir . '__' . $fileName . '__' . md5($path) . '.' . $extension;
-
-        return $tempFileName;
-    }
+    /** テンプレート変換 */
+    abstract public function convertTemplate(string $templateData): string;
 }
