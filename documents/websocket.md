@@ -41,6 +41,7 @@ websocketはphpで連携する。
 ```
 {
   message: string,
+  name: string, (Redis送信時のみ)
 }
 ```
 
@@ -83,6 +84,7 @@ rpushキー: `websocket_publish`
 ```
 {
   message: string,
+  name: string, (Redis送信時のみ)
 }
 ```
 
