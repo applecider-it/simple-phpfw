@@ -14,7 +14,7 @@ if (el) {
 
   console.log('all', all);
 
-  const chatClient = new ChatClient(all.host, all.token);
+  const chatClient = new ChatClient(all.host, all.token, all.room);
 
   createApp(ChatArea, { chatClient }).mount(el);
 }

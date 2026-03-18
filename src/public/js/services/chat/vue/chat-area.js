@@ -10,18 +10,18 @@ const ChatArea = {
 
   methods: {
     /** クリック時 */
-    onClick() {
-      this.send();
+    onClick(type) {
+      this.send(type);
     },
 
     /** inputボックスでキーダウン */
     onKeydown(e) {
-      if (e.key === "Enter") this.send();
+      if (e.key === "Enter") this.send('ws');
     },
 
     /** 送信処理 */
-    send() {
-      this.chatClient.send(this.message);
+    send(type) {
+      this.chatClient.send(this.message, type);
       this.message = "";
     },
   },
@@ -55,21 +55,29 @@ const ChatArea = {
       >
 
       <button
-        @click="onClick"
+        @click="onClick('ws')"
         class="app-btn-primary"
         style="margin-left: 1rem;"
         >
         送信
+      </button>
+
+      <button
+        @click="onClick('redis')"
+        class="app-btn-primary"
+        style="margin-left: 1rem;"
+        >
+        送信(R)
       </button>
     </div>
 
     <!-- ログ一覧 -->
     <div style="margin-top: 2rem" class="chat-log">
       <div v-for="(item, index) in reversedList" :key="index">
-        <span>{{ item.data.message }}</span>
+        <span>{{ item.message }}</span>
 
         <span style="color:#444; font-size:0.7rem;">
-          by {{ item.sender.name }}
+          by {{ item.name }}
         </span>
       </div>
     </div>

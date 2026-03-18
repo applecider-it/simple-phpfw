@@ -4,8 +4,7 @@ namespace App\Services\Commands;
 
 use SFW\Core\App;
 
-use App\Services\WebSocket\SystemService;
-use App\Services\Channels\ChatChannel;
+use App\Services\Chat\WebSocketService;
 
 /**
  *  WebSocketの動作確認コマンド用サービス
@@ -16,9 +15,15 @@ class WebSocketTestCommandService
     {
         echo "Begin WebSocketTestCommandService\n";
 
-        $systemService = new SystemService;
-        $systemService->publish(ChatChannel::getChannel('default'), [
-            'message' => 'From System (Redis) ' . date('Y/m/d H:i:s'),
-        ]);
+        $msg = 'From System (R) ' . date('Y/m/d H:i:s');
+
+        // 送信上限（これ以外1バイトでも多いと失敗する）
+        $msg = 'From System (R) aaaaaaaaaaaaaaaa' . date('Y/m/d H:i:s');
+
+        $user = [
+            "name" => "Redis"
+        ];
+        $webSocketService = new WebSocketService;
+        $webSocketService->bloadcast('default', $msg, $user);
     }
 }

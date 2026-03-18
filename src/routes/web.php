@@ -17,6 +17,7 @@ $router->get('/', [HomeController::class, 'index'], ['name' => 'index']);
 
 // チャット
 $router->get('/chat', [ChatController::class, 'index'], ['auth' => 'user', 'name' => 'chat.index']);
+$router->post('/chat/store_redis', [ChatController::class, 'store_redis'], ['auth' => 'user']);
 
 // ツイート
 (function ($router) {
