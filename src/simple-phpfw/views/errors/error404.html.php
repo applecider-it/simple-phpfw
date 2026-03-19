@@ -10,7 +10,7 @@
 
     <main>
         <h2>404 Error</h2>
-        <pre class="description"><?= $this->h($data['e']) ?></pre>
+        <?= $this->render('errors.partials.trace', $data) ?>
     </main>
 
     <?= $this->render('layouts.partials.footer') ?>

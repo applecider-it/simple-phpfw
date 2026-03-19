@@ -48,7 +48,13 @@ class Loader
             include $meta['path'];
         } catch (\Throwable $e) {
             ob_end_clean();
-            throw new \SFW\Exceptions\View($meta, $e);
+
+            $metaForException = $meta;
+            if ($e instanceof \SFW\Exceptions\View) {
+                $metaForException = $e->meta();
+            }
+
+            throw new \SFW\Exceptions\View($metaForException, $e);
         }
         $val = ob_get_clean();
 
