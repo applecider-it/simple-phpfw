@@ -1,8 +1,5 @@
 <?php
-
-use SFW\Output\View\Layout;
-
-$data[Layout::KEY_LAYOUT_OPTIONS]->breadcrumbs = ['admin.users.index'];
+$this->setLayoutValue('breadcrumbs', ['admin.users.index']);
 ?>
 <h2 class="app-h2">admin.user.index</h2>
 

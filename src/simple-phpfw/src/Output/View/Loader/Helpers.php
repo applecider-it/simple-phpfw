@@ -7,6 +7,7 @@ namespace SFW\Output\View\Loader;
 use SFW\Output\Html;
 use SFW\Core\App;
 use SFW\Core\Config;
+use SFW\Output\View\Layout;
 
 /**
  * ヘルパー関数
@@ -51,5 +52,17 @@ trait Helpers
     private function config(string $key): mixed
     {
         return Config::get($key);
+    }
+
+    /** レイアウトに渡された値を取得 */
+    private function layoutValue(string $key): mixed
+    {
+        return $this->data[Layout::KEY_LAYOUT_OPTIONS][$key] ?? null;
+    }
+
+    /** レイアウトに値を渡す */
+    private function setLayoutValue(string $key, mixed $value): void
+    {
+        $this->data[Layout::KEY_LAYOUT_OPTIONS][$key] = $value;
     }
 }

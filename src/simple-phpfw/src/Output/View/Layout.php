@@ -28,13 +28,9 @@ class Layout
         array $layoutData = [],
         array $globalData = []
     ): string {
+        $globalData[self::KEY_LAYOUT_OPTIONS] = [];
+
         $view->appendCommonData($globalData);
-
-        // レイアウトに渡す値
-        //（オブジェクトにすることで参照渡しになるので、$nameのテンプレートからレイアウトに値を渡せる）
-        $layoutOptions = new \stdClass;
-
-        $data[self::KEY_LAYOUT_OPTIONS] = $layoutOptions;
 
         $val = $view->render($name, $data);
 
@@ -43,7 +39,6 @@ class Layout
 
             $val = $view->render($layout, [
                 self::KEY_LAYOUT_CONTENT => $val,
-                self::KEY_LAYOUT_OPTIONS => $data[self::KEY_LAYOUT_OPTIONS],
             ] + $layoutData);
         }
 

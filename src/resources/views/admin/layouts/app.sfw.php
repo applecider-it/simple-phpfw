@@ -13,7 +13,7 @@ use SFW\Output\View\Layout;
     <?= $this->render('admin.layouts.partials.common') ?>
     <?= $this->render('admin.layouts.partials.nav') ?>
     <?= $this->render('admin.layouts.partials.breadcrumbs', [
-        'breadcrumbs' => $data[Layout::KEY_LAYOUT_OPTIONS]->breadcrumbs ?? null,
+        'breadcrumbs' => $this->layoutValue('breadcrumbs'),
     ]) ?>
 
     <main class="app-layout-main">

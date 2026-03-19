@@ -1,8 +1,5 @@
 <?php
-
-use SFW\Output\View\Layout;
-
-$data[Layout::KEY_LAYOUT_OPTIONS]->breadcrumbs = ['admin.users.create'];
+$this->setLayoutValue('breadcrumbs', ['admin.users.create']);
 
 $data['exists'] = false;
 ?>
