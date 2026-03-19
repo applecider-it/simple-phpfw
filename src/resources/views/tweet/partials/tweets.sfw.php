@@ -1,9 +1,3 @@
-<?php
-
-use SFW\Output\Html;
-use SFW\Core\Config;
-?>
-
 <style>
     .tweet-card {
         background: #fff;
@@ -23,13 +17,13 @@ use SFW\Core\Config;
     <?php foreach ($data['tweets'] as $tweet): ?>
         <div class="tweet-card">
             <div style="font-size:15px; color:#222; line-height:1.6;">
-                <?= Html::esc($tweet['content']) ?>
+                {{ $tweet['content'] }}
             </div>
             <div style="margin-top:8px; font-size:13px; color:#777;">
-                <?= Html::esc($tweet['created_at']) ?>
+                {{ $tweet['created_at'] }}
             </div>
             <div style="margin-top:8px; font-size:13px; color:#777;">
-                send by <?= Html::esc($tweet['user']['name']) ?>
+                send by {{ $tweet['user']['name'] }}
             </div>
         </div>
     <?php endforeach; ?>

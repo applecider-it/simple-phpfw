@@ -1,9 +1,3 @@
-<?php
-
-use SFW\Core\Config;
-
-$prefix = Config::get('prefix');
-?>
 <h2 class="app-h2">development.index</h2>
 
 <div style="display:flex; flex-direction:column; gap:1rem;">
