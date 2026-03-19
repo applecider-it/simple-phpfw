@@ -24,4 +24,8 @@
     <div>
         <div><a href="{{ $this->route('development.design') }}" class="app-link-normal">design</a></div>
     </div>
+
+    <div>
+        <div><a href="{{ $this->route('development.html_test') }}" class="app-link-normal">html_test</a></div>
+    </div>
 </div>

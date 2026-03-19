@@ -188,6 +188,14 @@ class DevelopmentController extends Controller
         return $this->render('development.complate');
     }
 
+    /** htmlテスト */
+    public function html_test()
+    {
+        return $this->render('development.html_test', [
+            'val1' => 'HTML版テンプレート',
+        ]);
+    }
+
     private function formData()
     {
         $formService = new FormService;

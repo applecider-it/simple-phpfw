@@ -64,6 +64,7 @@ $router->post('/chat/store_redis', [ChatController::class, 'store_redis'], ['aut
     $router->post($prefix . '/api_post_nosession', [$controller, 'api_post_nosession'], ['nosession' => true]);
     $router->get($prefix . '/design', [$controller, 'design'], ['name' => 'development.design']);
     $router->get($prefix . '/php_test', [$controller, 'php_test'], ['name' => 'development.php_test']);
+    $router->get($prefix . '/html_test', [$controller, 'html_test'], ['name' => 'development.html_test']);
 })($router);
 
 // 別ファイルにしているルート読み込み
