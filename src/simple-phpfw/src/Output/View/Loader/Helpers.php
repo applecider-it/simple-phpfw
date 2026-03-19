@@ -40,7 +40,7 @@ trait Helpers
     }
 
     /** 設定取得 */
-    public static function config($key): mixed
+    public static function config(string $key): mixed
     {
         return Config::get($key);
     }
