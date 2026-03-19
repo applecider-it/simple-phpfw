@@ -9,8 +9,8 @@
     <?= $this->render('layouts.partials.nav') ?>
 
     <main>
-        <h2>404 Error</h2>
-        <?= $data['e'] ?? '' ?>
+        <h2>500 Error</h2>
+        <pre class="description">{{ $data['e'] ?? '' }}</pre>
     </main>
 
     <?= $this->render('layouts.partials.footer') ?>

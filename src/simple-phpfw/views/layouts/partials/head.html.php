@@ -12,17 +12,23 @@
     header {
         background: #aaa;
         color: #333;
-        padding: 1rem;
-    }
-
-    header a {
-        color: #fff;
-        margin-right: 1rem;
-        text-decoration: none;
+        padding: 0.5rem;
     }
 
     main {
         padding: 3rem 5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        padding: 0.5rem;
+        margin: 0.5rem;
+    }
+
+    .description {
+        border: 1px solid #aaa;
+        padding: 0.5rem;
+        overflow-y: auto;
     }
 
     footer {

@@ -14,6 +14,9 @@ websocket: 9090
 
 foreman start
 
+これで起動すると、foremanが.envを読み込む。
+SFWの.env解釈は簡略版で違うので注意
+
 ----------
 
 php -S localhost:9000 -t public

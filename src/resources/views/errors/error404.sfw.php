@@ -5,12 +5,12 @@
     <?= $this->render('layouts.partials.head') ?>
 </head>
 
-<body>
+<body class="app-layout-body">
     <?= $this->render('layouts.partials.nav') ?>
 
-    <main>
-        <h2>500 Error</h2>
-        <div>何らかのエラーが発生しました</div>
+    <main class="app-layout-main">
+        <h2 class="app-h2">404 Error</h2>
+        <div>ページが見つかりません。</div>
     </main>
 
     <?= $this->render('layouts.partials.footer') ?>
