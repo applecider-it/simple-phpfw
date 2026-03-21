@@ -9,7 +9,7 @@ foreach ($lines as $idx => $line) {
     $num = $idx + 1;
     $lineClass = $srcLine === $num ? 'active' : '';
     $html .= "<div class='$lineClass'>";
-        $html .= "<span>$num:</span>" . $this->h($line) . "\n";
+    $html .=    "<span class='number'>$num:</span><span class='text'>" . $this->h($line) . "</span>\n";
     $html .= "</div>";
 }
 ?>

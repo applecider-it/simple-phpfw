@@ -37,16 +37,24 @@
         padding: 0.5rem;
         overflow-y: auto;
         white-space: pre-wrap;
-        background: #ffe;
+    }
+
+    .trace-exception-lines>div {
+        line-height: 1.5rem;
+        background: #ffd;
     }
 
     .trace-exception-lines>div>span {
         display: inline-block;
-        width: 2.5rem;
     }
 
     .trace-exception-lines>div.active {
         background: #fdd;
+    }
+
+    .trace-exception-lines>div>span.number {
+        background: #fff;
+        width: 2.5rem;
     }
 
     #trace-all-exceptions-box {

@@ -1,5 +1,4 @@
 <?php
-
 $file = $file ?? $exception->getFile();
 $line = $exception->getLine();
 ?>

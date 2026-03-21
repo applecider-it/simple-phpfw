@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
+<?= $this->render('layouts.app_begin') ?>
 
-<head>
-    <?= $this->render('layouts.partials.head') ?>
-</head>
+<main>
+    <h2>404 Error</h2>
+    <?= $this->render('errors.partials.trace', $data) ?>
+</main>
 
-<body>
-    <?= $this->render('layouts.partials.nav') ?>
-
-    <main>
-        <h2>404 Error</h2>
-        <?= $this->render('errors.partials.trace', $data) ?>
-    </main>
-
-    <?= $this->render('layouts.partials.footer') ?>
-</body>
-
-</html>
+<?= $this->render('layouts.app_end') ?>

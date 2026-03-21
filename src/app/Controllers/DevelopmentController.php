@@ -125,6 +125,12 @@ class DevelopmentController extends Controller
         return $this->render('development.view_exception_test');
     }
 
+    /** viewの例外テスト2 */
+    public function view_exception_test2()
+    {
+        return $this->render('development.view_exception_test2');
+    }
+
     /** javascriptテスト */
     public function javascript_test()
     {
