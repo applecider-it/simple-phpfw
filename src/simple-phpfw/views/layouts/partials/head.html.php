@@ -6,7 +6,6 @@
         line-height: 1.6;
         margin: 0;
         padding: 0;
-        background: #eef;
     }
 
     header {
@@ -25,7 +24,7 @@
         margin: 0.5rem;
     }
 
-    .description {
+    .trace-exception-description {
         border: 1px solid #aaa;
         padding: 0.5rem;
         overflow-y: auto;
@@ -33,11 +32,21 @@
         max-height: 15rem;
     }
 
-    .lines {
+    .trace-exception-lines {
         border: 1px solid #aaa;
         padding: 0.5rem;
         overflow-y: auto;
         white-space: pre-wrap;
+        background: #ffe;
+    }
+
+    .trace-exception-lines>div>span {
+        display: inline-block;
+        width: 2.5rem;
+    }
+
+    .trace-exception-lines>div.active {
+        background: #fdd;
     }
 
     #trace-all-exceptions-box {

@@ -7,10 +7,10 @@ $lines = File::getLinesAround($srcPath, $srcLine - 1);
 $html = '';
 foreach ($lines as $idx => $line) {
     $num = $idx + 1;
-    $lineStyle = $srcLine === $num ? 'background: #fdd;' : '';
-    $html .= "<div style='$lineStyle'>";
-    $html .= "<span style='display: inline-block; width: 2.5rem;'>$num:</span>" . $this->h($line) . "\n";
+    $lineClass = $srcLine === $num ? 'active' : '';
+    $html .= "<div class='$lineClass'>";
+        $html .= "<span>$num:</span>" . $this->h($line) . "\n";
     $html .= "</div>";
 }
 ?>
-<pre class="lines"><?= $html ?></pre>
+<pre class="trace-exception-lines"><?= $html ?></pre>

@@ -10,5 +10,5 @@ $line = $exception->getLine();
         'srcPath' => $file,
         'srcLine' => $line,
     ]) ?>
-    <pre class="description"><?= $this->h($exception->getTraceAsString()) ?></pre>
+    <pre class="trace-exception-description"><?= $this->h($exception->getTraceAsString()) ?></pre>
 </div>
