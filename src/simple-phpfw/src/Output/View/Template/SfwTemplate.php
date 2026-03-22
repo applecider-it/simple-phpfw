@@ -12,7 +12,11 @@ class SfwTemplate extends Base
     /**
      * テンプレート変換
      * 
+     * 変換パターン
+     * 
+     * ```txt
      * {{ $val }} -> <?= $this->h($val) ?>
+     * ```
      */
     public function convertTemplate(string $templateData): string
     {
