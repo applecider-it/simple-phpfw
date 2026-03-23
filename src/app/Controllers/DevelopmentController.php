@@ -119,18 +119,6 @@ class DevelopmentController extends Controller
         Log::info('このログは出力されない。');
     }
 
-    /** viewの例外テスト */
-    public function view_exception_test()
-    {
-        return $this->render('development.view_exception_test');
-    }
-
-    /** viewの例外テスト2 */
-    public function view_exception_test2()
-    {
-        return $this->render('development.view_exception_test2');
-    }
-
     /** javascriptテスト */
     public function javascript_test()
     {

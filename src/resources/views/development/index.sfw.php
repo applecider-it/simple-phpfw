@@ -24,7 +24,5 @@
     <div>
         <div><a href="{{ $this->route('development.index') }}/notfoud_test" class="app-link-normal">notfoud_test</a></div>
         <div><a href="{{ $this->route('development.exeption_test') }}" class="app-link-normal">exeption_test</a></div>
-        <div><a href="{{ $this->route('development.view_exception_test') }}" class="app-link-normal">view_exception_test</a></div>
-        <div><a href="{{ $this->route('development.view_exception_test2') }}" class="app-link-normal">view_exception_test2</a></div>
     </div>
 </div>
