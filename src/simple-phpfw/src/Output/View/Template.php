@@ -107,7 +107,7 @@ class Template
      * 
      * 必要な時は、テンポラリーファイルを生成する。
      */
-    private function getGenartedPathInfo(string $path, string $type): ?array
+    private function getGenartedPathInfo(string $path, string $type): array
     {
         /** @var string テンポラリーファイルパス */
         $tmpPath = SFW_PROJECT_ROOT . '/storage/views/' . $this->tempFileName($path);
