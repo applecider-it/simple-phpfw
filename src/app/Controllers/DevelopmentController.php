@@ -64,15 +64,6 @@ class DevelopmentController extends Controller
         );
     }
 
-    /** templateのテスト */
-    public function template_test()
-    {
-        return $this->render('development.template_test', [
-            'val1' => '<div style="color: red">abc</div>',
-            'val2' => '<div style="color: blue">123</div>',
-        ]);
-    }
-
     /** パラメーターテスト */
     public function param_test()
     {
@@ -186,14 +177,6 @@ class DevelopmentController extends Controller
         Log::info('コンテナデータ' . Json::trace($all, true));
 
         return $this->render('development.complate');
-    }
-
-    /** htmlテスト */
-    public function html_test()
-    {
-        return $this->render('development.html_test', [
-            'val1' => 'HTML版テンプレート',
-        ]);
     }
 
     private function formData()

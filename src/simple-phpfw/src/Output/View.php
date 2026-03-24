@@ -12,15 +12,11 @@ class View
     /** 基準となるディレクトリパス。nullだとresources/viewsになる。 */
     private ?string $baseDir = null;
 
-    /** テンプレート管理 */
-    private View\Template $template;
-
-    /** テンプレート管理 */
+    /** 読み込み管理 */
     private View\Loader $loader;
 
     function __construct()
     {
-        $this->template = new View\Template($this);
         $this->loader = new View\Loader($this);
     }
 
@@ -29,9 +25,24 @@ class View
      */
     public function render(string $name, array $data = []): string
     {
-        $meta = $this->template->renderInfo($name);
+        $meta = $this->getMeta($name);
 
         return $this->loader->includeTemplate($meta, $data);
+    }
+
+    /**
+     * 描画情報を返す
+     */
+    private function getMeta(string $name): array
+    {
+        $baseDir = $this->baseDir ?? SFW_PROJECT_ROOT . '/resources/views';
+
+        $path = $baseDir . '/' . str_replace('.', '/', $name) . '.html.php';
+        if (!file_exists($path)) {
+            throw new \Exception("View not found: $name.");
+        }
+
+        return compact('name', 'baseDir', 'path');
     }
 
     /**
@@ -40,14 +51,6 @@ class View
     public function setBaseDir(string $baseDir): void
     {
         $this->baseDir = $baseDir;
-    }
-
-    /**
-     * 基準となるディレクトリパス
-     */
-    public function baseDir(): ?string
-    {
-        return $this->baseDir;
     }
 
     /**

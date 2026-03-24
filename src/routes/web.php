@@ -52,7 +52,6 @@ $router->post('/chat/store_redis', [ChatController::class, 'store_redis'], ['aut
     $router->get($prefix . '/view_test', [$controller, 'view_test'], ['name' => 'development.view_test']);
     $router->post($prefix . '/view_test_post', [$controller, 'view_test_post'], ['name' => 'development.view_test_post']);
     $router->get($prefix . '/render_test', [$controller, 'render_test'], ['name' => 'development.render_test']);
-    $router->get($prefix . '/template_test', [$controller, 'template_test'], ['name' => 'development.template_test']);
     $router->get($prefix . '/param_test/{id}', [$controller, 'param_test'], ['name' => 'development.param_test']);
     $router->post($prefix . '/param_test/{id}', [$controller, 'param_test']);
     $router->get($prefix . '/database_test', [$controller, 'database_test'], ['name' => 'development.database_test']);
@@ -65,7 +64,6 @@ $router->post('/chat/store_redis', [ChatController::class, 'store_redis'], ['aut
     $router->post($prefix . '/api_post_nosession', [$controller, 'api_post_nosession'], ['nosession' => true]);
     $router->get($prefix . '/design', [$controller, 'design'], ['name' => 'development.design']);
     $router->get($prefix . '/php_test', [$controller, 'php_test'], ['name' => 'development.php_test']);
-    $router->get($prefix . '/html_test', [$controller, 'html_test'], ['name' => 'development.html_test']);
 })($router);
 
 // 別ファイルにしているルート読み込み
