@@ -10,7 +10,7 @@ use SFW\Output\View\Layout;
 </head>
 
 <body class="app-layout-body">
-    <?= $this->render('layouts.partials.common') ?>
+    <?= $this->render('partials.app.container') ?>
     <?= $this->render('layouts.partials.nav') ?>
 
     <main class="app-layout-main">
