@@ -6,8 +6,8 @@
 
 <div id="tweet"
     data-all="<?= $this->h(json_encode([
-            'token' => $token,
-            'host' => $this->config('app.ws_server_host'),
-        ])) ?>">
+                    'token' => $token,
+                    'host' => $this->config('app.ws_server_host'),
+                ])) ?>">
     <?= $this->render('partials.message.loading') ?>
 </div>

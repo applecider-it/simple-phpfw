@@ -29,10 +29,10 @@
 
     <div id="chat"
         data-all="<?= $this->h(json_encode([
-                'token' => $token,
-                'room' => $room,
-                'host' => $this->config('app.ws_server_host'),
-            ])) ?>">
+                        'token' => $token,
+                        'room' => $room,
+                        'host' => $this->config('app.ws_server_host'),
+                    ])) ?>">
         <?= $this->render('partials.message.loading') ?>
     </div>
 

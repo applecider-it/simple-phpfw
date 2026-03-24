@@ -6,9 +6,9 @@
 <div>
     <div id="dev"
         data-all="<?= $this->h(json_encode([
-                'test' => 'test1',
-                'formData' => $data['formData'],
-            ])) ?>">
+                        'test' => 'test1',
+                        'formData' => $data['formData'],
+                    ])) ?>">
         <?= $this->render('partials.message.loading') ?>
     </div>
 </div>
