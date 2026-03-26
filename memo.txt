@@ -179,6 +179,9 @@ php ./bin/console test --fw
 
 セットアップ
 
+composer install
+    オートロード作成で必要
+
 .env.exampleを.envにコピー
 
 .envの情報のDBテーブル作成

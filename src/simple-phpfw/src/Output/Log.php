@@ -34,6 +34,11 @@ class Log
         }
 
         $line = "[$date][$level] $message" . PHP_EOL;
-        file_put_contents($logFile, $line, FILE_APPEND | LOCK_EX);
+
+        if ($logFile === 'php://stderr') {
+            file_put_contents($logFile, $line, FILE_APPEND);
+        } else {
+            file_put_contents($logFile, $line, FILE_APPEND | LOCK_EX);
+        }
     }
 }
