@@ -90,7 +90,7 @@ class UserController extends Controller
 
         Flash::set('notice', '登録しました。');
 
-        Location::redirect(route('admin.users.edit', ['id' => $newId]));
+        Location::redirect(route('admin.user.edit', ['id' => $newId]));
     }
 
     /** 更新画面 */
@@ -151,7 +151,7 @@ class UserController extends Controller
 
         Flash::set('notice', '更新しました。');
 
-        Location::redirect(route('admin.users.edit', ['id' => $userId]));
+        Location::redirect(route('admin.user.edit', ['id' => $userId]));
     }
 
     /** 更新時共通情報 */
@@ -179,7 +179,7 @@ class UserController extends Controller
 
         Flash::set('notice', '論理削除しました。');
 
-        Location::redirect(route('admin.users.edit', ['id' => $userId]));
+        Location::redirect(route('admin.user.edit', ['id' => $userId]));
     }
 
     /** 復元 */
@@ -192,7 +192,7 @@ class UserController extends Controller
 
         Flash::set('notice', '復元しました。');
 
-        Location::redirect(route('admin.users.edit', ['id' => $userId]));
+        Location::redirect(route('admin.user.edit', ['id' => $userId]));
     }
 
     /** ユーザー取得 */
