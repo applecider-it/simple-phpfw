@@ -22,7 +22,7 @@ app/ <- アプリケーション部分
   Validations/ <- バリデーション
 bin/ <- 実行ファイル
   console <- コンソールコマンドエントリーポイント
-boot/ <- 起動時共通処理
+bootstrap/ <- 起動時共通処理
 config/ <- 設定
   config.php <- 全般の設定
 database/ <- データベース関連
@@ -30,8 +30,8 @@ public/ <- Webルート
   assets/ <- ビルドしたファイルの出力先
   index.php <- Webのエントリーポイント
 resources/ 
-  css/
-  js/
+  css/ <- Vite管理対象
+  js/ <- Vite管理対象
   lang/ <- 言語ファイル
   views/ <- Viewファイル
     admin/ <- 管理画面
