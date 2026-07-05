@@ -19,7 +19,6 @@ onMounted(() => {
 
 /** 送信 */
 const onSubmit = async () => {
-  console.log("onSubmit");
   try {
     await props.tweetClient.sendTweet(content.value);
 
