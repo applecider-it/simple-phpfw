@@ -17,6 +17,7 @@ export default defineConfig({
         rollupOptions: {
             input: [
                 "resources/js/entrypoints/app.ts",
+                "resources/js/entrypoints/tweet.ts",
                 "resources/js/entrypoints/admin/app.ts",
                 "resources/js/entrypoints/development/javascript-test.ts",
 

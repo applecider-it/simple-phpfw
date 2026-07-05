@@ -10,6 +10,7 @@
 
 use App\Controllers\HomeController;
 use App\Controllers\TweetController;
+use App\Controllers\TweetJsController;
 use App\Controllers\UserController;
 use App\Controllers\DevelopmentController;
 
@@ -26,6 +27,18 @@ $router->get('/', [HomeController::class, 'index'], ['name' => 'index']);
     $router->get($prefix, [$controller, 'index'], $options + ['name' => 'tweets.index']);
     $router->get($prefix . '/create', [$controller, 'create'], $options + ['name' => 'tweets.create']);
     $router->post($prefix . '/create', [$controller, 'store'], $options);
+})($router);
+
+// ツイートJS
+(function ($router) {
+    $options = ['auth' => 'user'];
+
+    $prefix = '/tweets-js';
+    $controller = TweetJsController::class;
+
+    $router->get($prefix, [$controller, 'index'], $options + ['name' => 'tweets-js.index']);
+    $router->get($prefix . '/list', [$controller, 'list'], $options);
+    $router->post($prefix . '/store', [$controller, 'store'], $options);
 })($router);
 
 // ユーザー画面

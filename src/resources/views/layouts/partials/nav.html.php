@@ -21,6 +21,7 @@ $mobileClass = 'block py-2 text-gray-700 hover:text-indigo-500';
         <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
             <a href="<?= $this->h($this->route('index')) ?>" class="<?= $desktopClass ?>">Home</a>
             <a href="<?= $this->h($this->route('tweets.index')) ?>" class="<?= $desktopClass ?>">Tweet</a>
+            <a href="<?= $this->h($this->route('tweets-js.index')) ?>" class="<?= $desktopClass ?>">Tweet(JS)</a>
 
             <?php if ($user): ?>
                 <a href="<?= $this->h($this->route('user.edit')) ?>" class="<?= $desktopClass ?>"><?= $this->h($user['name']) ?></a>
