@@ -32,7 +32,7 @@ onMounted(() => {
     <h3 class="app-h3">ツイート一覧</h3>
 
     <div v-if="tweetContainers">
-      <div class="space-y-4 mt-10">
+      <div class="space-y-4 mt-3">
         <div
           v-for="tweetContainer in tweetContainers"
           :key="tweetContainer.tweet.id"

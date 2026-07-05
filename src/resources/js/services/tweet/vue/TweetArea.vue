@@ -13,6 +13,8 @@ const props = defineProps<{
     <h2 class="app-h2">ツイート</h2>
 
     <TweetNew :tweetClient="tweetClient" />
-    <TweetList :tweetClient="tweetClient" />
+    <div class="mt-10">
+      <TweetList :tweetClient="tweetClient" />
+    </div>
   </div>
 </template>
