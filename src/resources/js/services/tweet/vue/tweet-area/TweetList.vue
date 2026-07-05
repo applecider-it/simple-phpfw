@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
-import { TweetContainer } from '../../types';
-import type TweetClient from '../../TweetClient';
+import { TweetContainer } from "../../types";
+import type TweetClient from "../../TweetClient";
 
 const props = defineProps<{
   tweetClient: TweetClient;

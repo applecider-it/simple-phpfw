@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TweetNew from './tweet-area/TweetNew.vue';
-import TweetList from './tweet-area/TweetList.vue';
-import type TweetClient from '../TweetClient';
+import TweetNew from "./tweet-area/TweetNew.vue";
+import TweetList from "./tweet-area/TweetList.vue";
+import type TweetClient from "../TweetClient";
 
 const props = defineProps<{
   tweetClient: TweetClient;

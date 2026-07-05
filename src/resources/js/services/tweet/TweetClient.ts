@@ -14,7 +14,7 @@ export default class TweetClient {
     const method = "POST";
 
     const url = "/tweets-js/store";
-    const data = {content};
+    const data = { content };
     console.log("url", url, data);
 
     const result = await sendData<any>(method, url, data);
@@ -37,5 +37,4 @@ export default class TweetClient {
 
     return result.tweets;
   }
-
 }

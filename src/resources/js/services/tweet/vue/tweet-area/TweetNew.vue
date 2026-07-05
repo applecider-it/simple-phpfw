@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import type TweetClient from '../../TweetClient';
+import { ref, onMounted } from "vue";
+import type TweetClient from "../../TweetClient";
 
 type Errors = {
   content?: string[];
@@ -10,16 +10,16 @@ const props = defineProps<{
   tweetClient: TweetClient;
 }>();
 
-const content = ref<string>('');
+const content = ref<string>("");
 const errors = ref<Errors>({});
 
 onMounted(() => {
-  console.log('init new');
+  console.log("init new");
 });
 
 /** 送信 */
 const onSubmit = async () => {
-  console.log('onSubmit')
+  console.log("onSubmit");
   try {
     await props.tweetClient.sendTweet(content.value);
 
@@ -27,7 +27,7 @@ const onSubmit = async () => {
 
     props.tweetClient.refreshList();
 
-    content.value = '';
+    content.value = "";
   } catch (error: any) {
     if (error.response?.status === 422) {
       errors.value = error.response.data.errors;
