@@ -6,7 +6,7 @@ use SFW\Output\Log;
 use SFW\Core\App;
 use SFW\Core\Config;
 use SFW\Data\Arr;
-use SFW\Data\Str;
+use SFW\Web\Json;
 
 use App\Services\Nav\BreadcrumbsService;
 
@@ -81,6 +81,7 @@ class Callback
     {
         // 連想配列の場合はJson
         if (is_array($val)) {
+            Json::sendJsonHeader();
             echo json_encode($val);
 
             return;

@@ -126,12 +126,6 @@ class Dispatcher
             Flash::clear();
         }
 
-        if ($isJsonRequest) {
-            // JSONリクエストの時
-
-            Json::sendJsonHeader();
-        }
-
         return $val;
     }
 
