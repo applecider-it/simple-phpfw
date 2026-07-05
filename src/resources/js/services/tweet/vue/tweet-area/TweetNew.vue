@@ -39,16 +39,16 @@ const onSubmit = async () => {
   <div>
     <h3 class="app-h3">新規ツイート</h3>
 
-    <form @submit.prevent="onSubmit" class="mb-4 mt-3" id="tweetForm">
+    <form @submit.prevent="onSubmit" class="mb-4 mt-3">
       <textarea
         rows="3"
-        class="w-full border rounded p-2"
+        class="app-form-input"
         placeholder="What's happening?"
         name="content"
         v-model="content"
       />
 
-      <p v-if="errors?.content" class="text-red-600">
+      <p v-if="errors?.content" class="app-form-error">
         {{ errors.content[0] }}
       </p>
 
