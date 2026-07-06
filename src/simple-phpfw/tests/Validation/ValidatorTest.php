@@ -29,10 +29,12 @@ class TestValidator extends Validator
         $v = TestValidator::make($data, $rules, $labels);
 
         $result = $v->valid() === $valid;
+        $resultFails = $v->fails() === $valid;
 
         $info = json_encode($row);
 
         $this->check("TestValidator::make Test {$idx} result : " . $info, $result);
+        $this->check("TestValidator::make Test {$idx} resultFails : " . $info, ! $resultFails);
 
         if ($errorsCnt) {
             $errors = $v->errors();
