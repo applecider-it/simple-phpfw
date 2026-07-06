@@ -216,7 +216,7 @@ class Query
     }
 
     /** 全ての情報を返す */
-    public function getAllDatta() : array {
+    public function getAllData() : array {
         return [
             'tables' => $this->tables,
             'distinct' => $this->distinct,

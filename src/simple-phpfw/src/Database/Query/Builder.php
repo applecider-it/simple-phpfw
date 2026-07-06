@@ -50,7 +50,7 @@ class Builder
     function __construct(
         Query $query,
     ) {
-        $allData = $query->getAllDatta();
+        $allData = $query->getAllData();
 
         $this->tables = $allData['tables'];
         $this->distinct = $allData['distinct'];
