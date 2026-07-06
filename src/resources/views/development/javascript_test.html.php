@@ -8,7 +8,9 @@ $vite = App::get('vite');
 
 <h2 class="app-h2">development.javascript_test</h2>
 <div>
-    <h3 class="app-h3">Json動作確認</h3>
-
-    <div id="vue"></div>
+    <div id="vue"
+        data-all="<?= $this->h(json_encode([
+                        'valueTest' => compact('value1'),
+                    ])) ?>">
+    </div>
 </div>
