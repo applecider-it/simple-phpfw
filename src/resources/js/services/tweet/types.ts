@@ -4,7 +4,7 @@ type User = {
   name: string;
 };
 
-type Tweet = {
+export type Tweet = {
   id: number;
   content: string;
   created_at: string;

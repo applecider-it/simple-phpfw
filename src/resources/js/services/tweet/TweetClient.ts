@@ -1,4 +1,5 @@
 import { sendData } from "@/services/api/rest";
+import { Tweet } from "./types";
 
 type Urls = {
   list: string;
@@ -21,27 +22,27 @@ export default class TweetClient {
   /**
    * 新しいツイート送信
    */
-  async sendTweet(content) {
+  public async sendTweet(content) {
     const method = "POST";
 
     const url = this.urls.store;
     const data = { content };
     console.log("url", url, data);
 
-    const result = await sendData<any>(method, url, data);
+    const result = await sendData<{newId: number}>(method, url, data);
 
     console.log("result", result);
   }
 
   /** 一覧取得 */
-  async getList() {
+  public async getList() {
     const method = "GET";
 
     const url = this.urls.list;
     const data = {};
     console.log("url", url, data);
 
-    const result = await sendData<any>(method, url, data);
+    const result = await sendData<{tweets: Tweet[]}>(method, url, data);
 
     console.log("result", result);
     console.log("result.tweets", result.tweets);
