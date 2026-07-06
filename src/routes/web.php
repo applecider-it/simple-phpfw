@@ -37,8 +37,8 @@ $router->get('/', [HomeController::class, 'index'], ['name' => 'index']);
     $controller = TweetJsController::class;
 
     $router->get($prefix, [$controller, 'index'], $options + ['name' => 'tweets-js.index']);
-    $router->get($prefix . '/list', [$controller, 'list'], $options);
-    $router->post($prefix . '/store', [$controller, 'store'], $options);
+    $router->get($prefix . '/list', [$controller, 'list'], $options + ['name' => 'tweets-js.list']);
+    $router->post($prefix . '/store', [$controller, 'store'], $options + ['name' => 'tweets-js.store']);
 })($router);
 
 // ユーザー画面

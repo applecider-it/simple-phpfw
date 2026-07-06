@@ -47,4 +47,12 @@
     <div>
         <img class="w-20" src="<?= $this->file('/images/Block.png') ?>" />
     </div>
+
+    <h3 class="app-h3 mt-10">読み込み中表示動作確認</h3>
+    <div class="mt-5 border-gray-500 border-2 p-0">
+        <?= $this->render('partials.message.loading') ?>
+    </div>
+    <div class="mt-5 border-gray-500 border-2 p-0">
+        <?= $this->render('partials.message.loading') ?>
+    </div>
 </div>
