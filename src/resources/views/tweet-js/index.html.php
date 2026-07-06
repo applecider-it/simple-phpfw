@@ -14,6 +14,5 @@ $vite = App::get('vite');
                             'store' => $this->route('tweets-js.store'),
                         ],
                     ])) ?>">
-        <?= $this->render('partials.message.loading') ?>
     </div>
 </div>
