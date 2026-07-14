@@ -21,9 +21,9 @@ class Vite
     {
         $this->isDev = Config::get('vite.dev');
         $this->devUrl = 'http://localhost:' . Config::get('vite.port');
-        $this->prodUrl = '/assets';
+        $this->prodUrl = '/build';
 
-        $manifest_path = SFW_PROJECT_ROOT . '/public/assets/.vite/manifest.json';
+        $manifest_path = SFW_PROJECT_ROOT . '/public/build/.vite/manifest.json';
 
         if (!$this->isDev) {
             $this->manifest = json_decode(file_get_contents($manifest_path), true);

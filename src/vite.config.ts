@@ -11,7 +11,7 @@ export default defineConfig({
         },
     },
     build: {
-        outDir: "public/assets",
+        outDir: "public/build",
         emptyOutDir: true,
         manifest: true,
         rollupOptions: {
