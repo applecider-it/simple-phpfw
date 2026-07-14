@@ -23,5 +23,5 @@ $adminUser = Auth::get();
 <?= $this->render('partials.app.meta') ?>
 
 <?= $vite->init() ?>
-<link rel="stylesheet" href="<?= $this->h($vite->asset('resources/css/admin.css')) ?>">
-<script type="module" src="<?= $this->h($vite->asset('resources/js/entrypoints/admin/app.ts')) ?>"></script>
+<?= $vite->importCss('resources/css/admin.css') ?>
+<?= $vite->importJs('resources/js/entrypoints/admin/app.ts') ?>

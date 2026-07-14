@@ -4,7 +4,8 @@ use SFW\Core\App;
 
 $vite = App::get('vite');
 ?>
-<script type="module" src="<?= $this->h($vite->asset('resources/js/entrypoints/development/javascript-test.ts')) ?>"></script>
+
+<?= $vite->importJs('resources/js/entrypoints/development/javascript-test.ts') ?>
 
 <h2 class="app-h2">development.javascript_test</h2>
 <div>

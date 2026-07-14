@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SFW\Web;
 
 use SFW\Core\Config;
@@ -9,51 +11,83 @@ use SFW\Core\Config;
  */
 class Vite
 {
-    /** マニフェストのキャッシュ */
+    private bool $isDev;
+    private string $devUrl;
+    private string $prodUrl;
+
     private ?array $manifest = null;
 
-    /** Viteを使用する準備 */
+    function __construct()
+    {
+        $this->isDev = Config::get('vite.dev');
+        $this->devUrl = 'http://localhost:' . Config::get('vite.port');
+        $this->prodUrl = '/assets';
+
+        $manifest_path = SFW_PROJECT_ROOT . '/public/assets/.vite/manifest.json';
+
+        if (!$this->isDev) {
+            $this->manifest = json_decode(file_get_contents($manifest_path), true);
+        }
+    }
+
+    /** 初期処理 */
     public function init(): string
     {
-        $val = '';
-
-        if ($this->isDev()) {
-            $val = '<script type="module" src="' . $this->devUrl() . '/@vite/client"></script>';
-        }
-
-        return $val;
-    }
-
-    /** Viteアセットのパスをmanifestから返す。 */
-    public function asset(string $entry): string
-    {
-        if ($this->isDev()) {
-            return $this->devUrl() . '/' . $entry;
+        if ($this->isDev) {
+            $url = $this->devUrl . '/@vite/client';
+            return $this->importJsTag($url);
         } else {
-            $this->initManifest();
-
-            return '/assets/' . $this->manifest[$entry]['file'];
+            return '';
         }
     }
 
-    /** Manifestを取得 */
-    private function initManifest()
+    /** JSからの読み込み */
+    public function importJs(string $path): string
     {
-        if ($this->manifest === null) {
-            $path = SFW_PROJECT_ROOT . '/public/assets/.vite/manifest.json';
-            $this->manifest = json_decode(file_get_contents($path), true);
+        if ($this->isDev) {
+            $url = $this->devUrl . '/' . $path;
+
+            return $this->importJsTag($url);
+        } else {
+            $data = $this->manifest[$path];
+            $url = $this->prodUrl . '/' . $data['file'];
+
+            $html = $this->importJsTag($url);
+
+            // JSから読み込むときには、CSSの読み込みもある場合があるので、その対応
+            if (isset($data['css'])) {
+                foreach ($data['css'] as $css) {
+                    $url = $this->prodUrl . '/' . $css;
+                    $html .= $this->importCssTag($url);
+                }
+            }
+
+            return $html;
         }
     }
 
-    /** Viteが開発環境か返す */
-    private function isDev(): bool
+    /** CSSからの読み込み */
+    public function importCss(string $path): string
     {
-        return Config::get('vite.dev');
+        if ($this->isDev) {
+            $url = $this->devUrl . '/' . $path;
+
+            return $this->importCssTag($url);
+        } else {
+            $data = $this->manifest[$path];
+            $url = $this->prodUrl . '/' . $data['file'];
+
+            return $this->importCssTag($url);
+        }
     }
 
-    /** 開発環境のURL */
-    private function devUrl(): string
+    private function importJsTag(string $url): string
     {
-        return 'http://localhost:' . Config::get('vite.port');
+        return '<script type="module" src="' . $url . '"></script>';
+    }
+
+    private function importCssTag(string $url): string
+    {
+        return '<link rel="stylesheet" href="' . $url . '" type="text/css" media="all" />';
     }
 }

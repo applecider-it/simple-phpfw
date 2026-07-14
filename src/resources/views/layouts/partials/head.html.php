@@ -23,5 +23,5 @@ $user = Auth::get();
 <?= $this->render('partials.app.meta') ?>
 
 <?= $vite->init() ?>
-<link rel="stylesheet" href="<?= $this->h($vite->asset('resources/css/app.css')) ?>">
-<script type="module" src="<?= $this->h($vite->asset('resources/js/entrypoints/app.ts')) ?>"></script>
+<?= $vite->importCss('resources/css/app.css') ?>
+<?= $vite->importJs('resources/js/entrypoints/app.ts') ?>
