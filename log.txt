@@ -28,3 +28,5 @@ npm install alpinejs
 npm i --save-dev @types/alpinejs
 
 npm install axios
+
+npm install swiper

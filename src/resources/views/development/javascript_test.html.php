@@ -3,6 +3,13 @@
 use SFW\Core\App;
 
 $vite = App::get('vite');
+
+$list = [
+    '/images/Block.png',
+    '/images/Block.png',
+    '/images/Block.png',
+    '/images/Block.png',
+];
 ?>
 
 <?= $vite->importJs('resources/js/entrypoints/development/javascript-test.ts') ?>
@@ -13,5 +20,19 @@ $vite = App::get('vite');
         data-all="<?= $this->h(json_encode([
                         'valueTest' => compact('value1'),
                     ])) ?>">
+    </div>
+
+    <div class="swiper-container swiper-container1">
+        <div class="swiper swiper1">
+            <div class="swiper-wrapper">
+                <?php foreach ($list as $val): ?>
+                    <div class="swiper-slide">
+                        <Image src="<?= $this->h($val) ?>" alt="" class="mx-auto" />
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="swiper-pagination swiper-pagination1"></div>
+        </div>
     </div>
 </div>
