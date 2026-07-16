@@ -6,8 +6,9 @@ use SFW\Web\Controller as BaseController;
 
 use SFW\Core\App;
 use SFW\Output\Log;
-use SFW\View\View;
 use SFW\View\Layout;
+
+use App\Views\View;
 
 use App\Services\User\AuthService;
 

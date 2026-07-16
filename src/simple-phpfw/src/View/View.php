@@ -13,7 +13,7 @@ class View
     private ?string $baseDir = null;
 
     /** 読み込み管理 */
-    private Loader $loader;
+    protected Loader $loader;
 
     function __construct()
     {
