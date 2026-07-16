@@ -75,9 +75,3 @@ Web/ <- Web関連
 |--------|--------|--------|--------|
 | SFW_PROJECT_ROOT | プロジェクトルート | string |  |
 | SFW_BOOT_TYPE | 起動タイプ | string | `web` \| `console` |
-
-
-## ブラウザキャッシュ対応
-
-更新時に`config.php`の`$filePostfix`を変更することで可能。
-

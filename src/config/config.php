@@ -8,9 +8,6 @@
  * @var array $env
  */
 
-/** @var string ブラウザキャッシュ対応。多分、コンフリクトしやすいと思う。 */
-$filePostfix = '20260318_0000';
-
 $prefix = $env['SFW_PREFIX'];
 
 // アプリケーション独自の設定
@@ -55,9 +52,6 @@ return [
         'save_path' => SFW_PROJECT_ROOT . '/storage/session',
         'name' => "SFWSESSIONID",
     ],
-
-    // ブラウザキャッシュ対応
-    'filePostfix' => $filePostfix,
 
     'vite' => [
         'dev' => $debug,
