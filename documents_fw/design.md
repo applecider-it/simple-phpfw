@@ -56,3 +56,4 @@ tests/ <- ユニットテスト
 - Tailwind3
 - axios
 - Alpine
+- swiper
