@@ -33,7 +33,7 @@ class Tweet extends Model
     }
 
     /** 動作確認用Scope */
-    public static function scopeSampleScope(Query $query, $min, $max)
+    public static function scopeSampleScope(Query $query, int $min, int $max)
     {
         $query->where(static::$table . '.id > ?', $min);
         $query->where(static::$table . '.id < ?', $max);

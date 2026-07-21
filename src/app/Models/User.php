@@ -24,7 +24,7 @@ class User extends Model
     }
 
     /** キーワード検索Scope */
-    public static function scopeSearchKeyword(Query $query, $keyword)
+    public static function scopeSearchKeyword(Query $query, mixed $keyword)
     {
         $likeKeyword = "%{$keyword}%";
 
@@ -36,7 +36,7 @@ class User extends Model
     }
 
     /** ツイートのクエリービルダー */
-    public static function tweets($user_id)
+    public static function tweets(int $user_id)
     {
         return User\Tweet::query()
             ->where("user_id = ?", $user_id);
