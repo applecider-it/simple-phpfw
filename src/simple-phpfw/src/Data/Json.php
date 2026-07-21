@@ -10,7 +10,9 @@ namespace SFW\Data;
 class Json
 {
     /**
-     * オブジェクト以外は、型がわかるprint_rみたいな関数
+     * 型がわかるprint_rみたいな関数
+     * 
+     * オブジェクトでは、publicプロパティのみがJSONに変換される。
      */
     public static function trace(mixed $array, bool $return = false): ?string
     {

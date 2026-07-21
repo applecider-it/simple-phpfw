@@ -12,6 +12,8 @@ class Str
     /**
      * {}文字列を、置き換える
      * 
+     * 利用例
+     * 
      * xxxxx{name}xxxxx, ['name' => 'Value']
      */
     public static function template(string $text, array $vars): string
@@ -23,9 +25,11 @@ class Str
     }
 
     /**
-     * マルチバイト文字に対応した str_pad (全角は幅2、半角は幅1)
+     * マルチバイト文字に対応した str_pad
      * 
-     * フラグは、str_padのフラグを流用している。
+     * 全角は幅2、半角は幅1
+     * 
+     * $pad_typeのフラグは、str_padのフラグを流用している。
      *
      * @param string $input  対象文字列
      * @param int    $pad_length  出力したい幅（※全角2、半角1でカウント）

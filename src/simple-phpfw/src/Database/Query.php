@@ -150,8 +150,9 @@ class Query
     /**
      * スコープ適用
      * 
-     * 例：
-     * $scopeが[User::class, 'exampleScope']の場合、User::scopeExampleScopeというクラスメソッドを使う。
+     * 例：  
+     * $scopeが[User::class, 'exampleScope']の場合、  
+     * User::scopeExampleScopeというクラスメソッドを使う。
      */
     public function scope(array $scope, mixed ...$params): self
     {

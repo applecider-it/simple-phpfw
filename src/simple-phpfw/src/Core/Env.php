@@ -12,8 +12,8 @@ class Env
     /**
      * .envをロード
      * 
-     * 先頭に#がある行はコメント扱い。
-     * 環境変数を優先。
+     * - 先頭に#がある行はコメント扱い。
+     * - 環境変数を優先。
      */
     public static function load(string $path): array
     {

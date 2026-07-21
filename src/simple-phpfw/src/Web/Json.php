@@ -11,7 +11,11 @@ use SFW\Data\Arr;
  */
 class Json
 {
-    /** Jsonのリクエストか返す */
+    /**
+     * Jsonのリクエストか返す
+     * 
+     * CONTENT_TYPEだけではなく、HTTP_X_REQUESTED_WITHの判断も必要な場合がある
+     */
     public static function isJsonRequest(): bool
     {
         $contetType = $_SERVER["CONTENT_TYPE"] ?? '';
