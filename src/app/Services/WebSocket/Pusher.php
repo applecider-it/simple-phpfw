@@ -5,6 +5,9 @@ namespace App\Services\WebSocket;
 use SFW\Core\Config;
 use SFW\Output\Log;
 
+/**
+ * Pusher管理
+ */
 class Pusher
 {
     private string $host;
@@ -24,14 +27,29 @@ class Pusher
         $this->useTLS = Config::get('app.pusher.useTls');
     }
 
-    function send(string $channel, string $event, mixed $data)
+    /** ブロードキャスト */
+    public function broadcast(string $channel, string $event, mixed $data)
     {
         Log::info('Pusher::send', [$channel, $event, $data]);
 
-        $scheme = $this->useTLS ? 'https' : 'http';
-        $path = "/apps/{$this->appId}/events";
+        $body = $this->createBody($channel, $event, $data);
 
-        // イベントデータ (dataフィールドはJSON文字列化する必要あり)
+        $queryString = $this->createQueryString($body);
+
+        $url = $this->createUrl($queryString);
+
+        $result = $this->send($url, $body);
+
+        Log::info('Pusher::send result', [$result]);
+    }
+
+    /**
+     * イベントデータ作成
+     * 
+     * dataフィールドはJSON文字列化する必要あり
+     */
+    private function createBody(string $channel, string $event, mixed $data)
+    {
         $payloadData = is_string($data) ? $data : json_encode($data, JSON_UNESCAPED_UNICODE);
 
         // 送信ペイロードの作成
@@ -40,9 +58,17 @@ class Pusher
             'channels' => [$channel],
             'data'     => $payloadData,
         ];
-        $body = json_encode($bodyArray, JSON_UNESCAPED_UNICODE);
 
-        // 署名用クエリパラメータの準備 (キー名で昇順ソート)
+        return json_encode($bodyArray, JSON_UNESCAPED_UNICODE);
+    }
+
+    /**
+     * 署名用クエリパラメータの準備
+     * 
+     * キー名で昇順ソート
+     */
+    private function createQueryString(string $body)
+    {
         $bodyMd5 = md5($body);
         $timestamp = time();
 
@@ -52,9 +78,17 @@ class Pusher
             'auth_version'   => '1.0',
             'body_md5'       => $bodyMd5,
         ];
+
         ksort($params);
 
-        $queryString = http_build_query($params);
+        return http_build_query($params);
+    }
+
+    /** URL作成 */
+    private function createUrl(string $queryString)
+    {
+        $scheme = $this->useTLS ? 'https' : 'http';
+        $path = "/apps/{$this->appId}/events";
 
         // 署名対象文字列の組み立て (METHOD\nPATH\nQUERY_STRING)
         $stringToSign = "POST\n{$path}\n{$queryString}";
@@ -63,8 +97,12 @@ class Pusher
         $signature = hash_hmac('sha256', $stringToSign, $this->secret);
 
         // 最終リクエストURL
-        $url = "{$scheme}://{$this->host}:{$this->port}{$path}?{$queryString}&auth_signature={$signature}";
+        return "{$scheme}://{$this->host}:{$this->port}{$path}?{$queryString}&auth_signature={$signature}";
+    }
 
+    /** REST送信 */
+    private function send(string $url, string $body)
+    {
         // cURL リクエスト送信
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');

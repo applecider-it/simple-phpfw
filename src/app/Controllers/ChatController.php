@@ -26,7 +26,7 @@ class ChatController extends Controller
         $pusher = new Pusher();
 
         $user = Auth::get();
-        $pusher->send(
+        $pusher->broadcast(
             'simplephpfw-chat-channel',
              'new-message',
             [
