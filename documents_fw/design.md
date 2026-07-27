@@ -29,6 +29,7 @@ database/ <- データベース関連
 public/ <- Webルート
   assets/ <- ビルドしたファイルの出力先
   index.php <- Webのエントリーポイント
+  hot <- Viteが起動しているかPHP側で判断するためのファイル
 resources/ 
   css/ <- Vite管理対象
   js/ <- Vite管理対象
@@ -38,6 +39,7 @@ resources/
 routes/
   web.php <- ルート設定
 simple-phpfw/ <- フレームワーク部分
+  node/ <- フレームワークで使うnodeファイル
   src/ <- PHPクラス
   tests/ <- フレームワーク用のユニットテスト
   views/ <- フレームワークで使うview
