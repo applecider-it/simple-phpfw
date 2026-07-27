@@ -18,8 +18,10 @@ export default class ChatClient {
   constructor(urls: Urls) {
     this.urls = urls;
 
+    const channelId = 'simplephpfw-chat-channel';
+
     // pusher 接続
-    const channel = pusher.subscribe(`simplephpfw-chat-channel`);
+    const channel = pusher.subscribe(channelId);
 
     channel.bind("new-message", (data) => this.onMessageP(data));
   }

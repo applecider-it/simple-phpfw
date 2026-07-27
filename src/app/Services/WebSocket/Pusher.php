@@ -14,8 +14,8 @@ class Pusher
     private string $appId;
     private string $key;
     private string $secret;
-    private int $port = 80;
-    private bool $useTLS = false;
+    private int $port;
+    private bool $useTLS;
 
     function __construct()
     {

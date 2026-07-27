@@ -2,12 +2,9 @@
 
 namespace App\Controllers;
 
-use SFW\Core\App;
-use SFW\Core\Config;
 use SFW\Output\Log;
 
-use App\Services\User\AuthService as Auth;
-use App\Services\WebSocket\Pusher;
+use App\Services\Chat\WebSocketService;
 
 /**
  * チャットコントローラー
@@ -23,16 +20,8 @@ class ChatController extends Controller
     /** 一覧API */
     public function store()
     {
-        $pusher = new Pusher();
+        $webSocketService = new WebSocketService;
 
-        $user = Auth::get();
-        $pusher->broadcast(
-            'simplephpfw-chat-channel',
-             'new-message',
-            [
-            'message' => $this->params['message'],
-            'user_id' => $user['id'],
-            'name' => $user['name'],
-        ]);
+        $webSocketService->broadcast($this->params['message']);
     }
 }
