@@ -11,6 +11,7 @@
 use App\Controllers\HomeController;
 use App\Controllers\TweetController;
 use App\Controllers\TweetJsController;
+use App\Controllers\ChatController;
 use App\Controllers\UserController;
 use App\Controllers\DevelopmentController;
 
@@ -39,6 +40,17 @@ $router->get('/', [HomeController::class, 'index'], ['name' => 'index']);
     $router->get($prefix, [$controller, 'index'], $options + ['name' => 'tweets-js.index']);
     $router->get($prefix . '/list', [$controller, 'list'], $options + ['name' => 'tweets-js.list']);
     $router->post($prefix . '/store', [$controller, 'store'], $options + ['name' => 'tweets-js.store']);
+})($router);
+
+// チャット
+(function ($router) {
+    $options = ['auth' => 'user'];
+
+    $prefix = '/chat';
+    $controller = ChatController::class;
+
+    $router->get($prefix, [$controller, 'index'], $options + ['name' => 'chat.index']);
+    $router->post($prefix . '/store', [$controller, 'store'], $options + ['name' => 'chat.store']);
 })($router);
 
 // ユーザー画面
