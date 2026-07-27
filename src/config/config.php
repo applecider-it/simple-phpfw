@@ -54,7 +54,6 @@ return [
     ],
 
     'vite' => [
-        'dev' => $debug,
         'port' => 5173,
     ],
 

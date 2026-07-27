@@ -19,7 +19,7 @@ class Vite
 
     function __construct()
     {
-        $this->isDev = Config::get('vite.dev');
+        $this->isDev = file_exists(SFW_PROJECT_ROOT . '/public/hot');
         $this->devUrl = 'http://localhost:' . Config::get('vite.port');
         $this->prodUrl = '/build';
 

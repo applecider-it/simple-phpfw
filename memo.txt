@@ -145,6 +145,11 @@ npm run build
 
 動作確認
 
-config.phpのvite.devをfalse
+php -S localhost:9000 -t public
 
+で起動して
+
+npm run dev
+
+は起動しない
 
