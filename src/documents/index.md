@@ -19,6 +19,7 @@
 |--------|--------|--------|--------|
 | adminUser | 管理画面のログインユーザー | App\Services\AdminUser\AuthService \| null |  |
 | breadcrumbs | パンくず | App\Services\Nav\BreadcrumbsService |  |
+| redis | Redis | Redis |  |
 | user | ログインユーザー | App\Services\User\AuthService \| null |  |
 
 ## ルート
