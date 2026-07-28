@@ -20,6 +20,7 @@ app/ <- アプリケーション部分
   Models/ <- DBモデル
   Services/ <- サービスクラス
   Validations/ <- バリデーション
+  Views/ <- Viewクラス
 bin/ <- 実行ファイル
   console <- コンソールコマンドエントリーポイント
 bootstrap/ <- 起動時共通処理
