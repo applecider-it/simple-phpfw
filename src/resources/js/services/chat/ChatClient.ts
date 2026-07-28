@@ -14,11 +14,13 @@ export default class ChatClient {
   addMessage: Function;
 
   private urls: Urls;
+  private room: string;
 
-  constructor(urls: Urls) {
+  constructor(urls: Urls, room: string) {
     this.urls = urls;
+    this.room = room;
 
-    const channelId = "simplephpfw-chat-channel";
+    const channelId = `simplephpfw-chat-channel--${this.room}`;
 
     // pusher 接続
     const channel = pusher.subscribe(channelId);
@@ -43,7 +45,7 @@ export default class ChatClient {
     const method = "POST";
 
     const url = this.urls.store;
-    const data = { message };
+    const data = { message, room: this.room };
     console.log("url", url, data);
 
     const result = await sendData<{ newId: number }>(method, url, data);

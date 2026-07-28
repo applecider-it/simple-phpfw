@@ -31,16 +31,21 @@ use SFW\Data\Str;
 // template test
 (function () {
     $checkList = [
-        ['xxxxx{val1}xxxxx', ['val1' => 'あああ'], 'xxxxxあああxxxxx'],
-        ['{val1}xxxxx{val1}xxx{val1}xx', ['val1' => 'あああ'], 'あああxxxxxあああxxxあああxx'],
-        ['xxxxx{val1}xxxxx{val2}', ['val1' => 'あああ', 'val2' => 'いいい'], 'xxxxxあああxxxxxいいい'],
+        ['xxxxx{val1}xxxxx', ['val1' => 'あああ', 'val2' => 'いいい'], 'xxxxxあああxxxxx', ['val2' => 'いいい']],
+        ['{val1}xxxxx{val1}xxx{val1}xx', ['val1' => 'あああ'], 'あああxxxxxあああxxxあああxx', []],
+        ['xxxxx{val1}xxxxx{val2}', ['val1' => 'あああ', 'val2' => 'いいい', 'val3' => 'ううう', 'val4' => 'えええ'], 'xxxxxあああxxxxxいいい', ['val3' => 'ううう', 'val4' => 'えええ']],
     ];
 
     foreach ($checkList as $idx => $row) {
         $input = $row[0];
         $vars = $row[1];
         $result = $row[2];
+        $rest = $row[3];
 
         $this->check("template test {$idx} [{$result}]", Str::template($input, $vars) === $result);
+
+        $ret = Str::template($input, $vars, true);
+        $this->check("template test {$idx} [{$result}] detail text", $ret['text'] === $result);
+        $this->check("template test {$idx} [{$result}] detail rest", $ret['rest'] === $rest);
     }
 })();

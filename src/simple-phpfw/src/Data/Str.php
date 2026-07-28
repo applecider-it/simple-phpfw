@@ -16,11 +16,20 @@ class Str
      * 
      * xxxxx{name}xxxxx, ['name' => 'Value']
      */
-    public static function template(string $text, array $vars): string
+    public static function template(string $text, array $vars, bool $detail = false): string | array
     {
+        $rest = [];
         foreach ($vars as $key => $val) {
-            $text = str_replace("{" . $key . "}", (string) $val, $text);
+            $search = "{" . $key . "}";
+            if (str_contains($text, $search)) {
+                $text = str_replace($search, (string) $val, $text);
+            } else {
+                $rest[$key] = $val;
+            }
         }
+
+        if ($detail) return compact('rest', 'text');
+
         return $text;
     }
 

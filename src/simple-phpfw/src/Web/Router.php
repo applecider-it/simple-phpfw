@@ -86,6 +86,14 @@ class Router
 
         $prefix = Config::get('prefix');
 
-        return $prefix . Str::template($this->names[$name], $data);
+        $ret = Str::template($this->names[$name], $data, true);
+
+        $rest = $ret['rest'];
+
+        $url = $prefix . $ret['text'];
+
+        if ($rest) $url .= '?' . http_build_query($rest);
+
+        return $url;
     }
 }

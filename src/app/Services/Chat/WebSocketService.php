@@ -10,17 +10,19 @@ use App\Services\WebSocket\Pusher;
  */
 class WebSocketService
 {
-    private string $channelId = 'simplephpfw-chat-channel';
+    private string $channelBaseId = 'simplephpfw-chat-channel';
 
     /** ブロードキャスト */
-    public function broadcast(string $message)
+    public function broadcast(string $message, string $room)
     {
         $pusher = new Pusher();
 
         $user = Auth::get();
 
+        $channelId = $this->channelBaseId . '--' . $room;
+
         $pusher->broadcast(
-            $this->channelId,
+            $channelId,
             'new-message',
             [
                 'message' => $message,

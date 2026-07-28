@@ -9,6 +9,7 @@ use SFW\Web\Response;
 use App\Validations\Validator;
 
 use App\Services\Chat\WebSocketService;
+use App\Services\Chat\RoomService;
 
 /**
  * チャットコントローラー
@@ -18,10 +19,19 @@ class ChatController extends Controller
     /** チャット画面 */
     public function index()
     {
-        return $this->render('chat.index');
+        $roomService = new RoomService;
+
+        $room = $this->params['room'] ?? null;
+
+        $ret = $roomService->getRoomInfo($room);
+
+        $room = $ret['room'];
+        $rooms = $ret['rooms'];
+
+        return $this->render('chat.index', compact('room', 'rooms'));
     }
 
-    /** 一覧API */
+    /** 登録API */
     public function store()
     {
         $form = Arr::choise($this->params, ['message']);
@@ -47,7 +57,7 @@ class ChatController extends Controller
 
         $webSocketService = new WebSocketService;
 
-        $webSocketService->broadcast($form['message']);
+        $webSocketService->broadcast($form['message'], $this->params['room']);
 
         return ['status' => true];
     }
