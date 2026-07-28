@@ -36,6 +36,10 @@ class Callback
 
             include(SFW_PROJECT_ROOT . '/config/breadcrumbs.php');
         })();
+
+        $redis = new \Redis();
+        $redis->connect('127.0.0.1', 6379);
+        App::getContainer()->setSingleton('redis', $redis, 'Redis');
     }
 
     /** リクエスト情報取得直後 */
