@@ -3,6 +3,10 @@
 namespace App\Controllers;
 
 use SFW\Output\Log;
+use SFW\Data\Arr;
+use SFW\Web\Response;
+
+use App\Validations\Validator;
 
 use App\Services\Chat\WebSocketService;
 
@@ -20,8 +24,33 @@ class ChatController extends Controller
     /** 一覧API */
     public function store()
     {
+        $form = Arr::choise($this->params, ['message']);
+
+        $rules = [
+            'message' => ['required'],
+        ];
+
+        $labels = [
+            'message' => 'メッセージ',
+        ];
+
+        $v = Validator::make($form, $rules, $labels);
+
+        $errors = null;
+
+        if ($v->fails()) {
+            // エラーがあるとき
+
+            $errors = $v->errors();
+
+            Response::code(422);
+            return compact('errors');
+        }
+
         $webSocketService = new WebSocketService;
 
-        $webSocketService->broadcast($this->params['message']);
+        $webSocketService->broadcast($form['message']);
+
+        return ['status' => true];
     }
 }

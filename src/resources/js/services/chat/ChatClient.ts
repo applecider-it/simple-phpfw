@@ -18,7 +18,7 @@ export default class ChatClient {
   constructor(urls: Urls) {
     this.urls = urls;
 
-    const channelId = 'simplephpfw-chat-channel';
+    const channelId = "simplephpfw-chat-channel";
 
     // pusher 接続
     const channel = pusher.subscribe(channelId);
@@ -39,7 +39,6 @@ export default class ChatClient {
   /** メッセージ送信 */
   async sendMessage(message: string) {
     console.log("sendMessage", message);
-    if (!message) return;
 
     const method = "POST";
 
