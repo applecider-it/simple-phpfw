@@ -61,8 +61,6 @@ class TweetController extends Controller
 
         $v = Validator::make($form, $rules, $labels);
 
-        $errors = null;
-
         if ($v->fails()) {
             // エラーがあるとき
 
