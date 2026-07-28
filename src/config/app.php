@@ -24,4 +24,9 @@ return [
         'appSecret' => $env['PUSHER_APP_SECRET'],
         'useTls' => $env['PUSHER_USE_TLS'],
     ],
+
+    'redis' => [
+        'host' => '127.0.0.1',
+        'port' => 6379,
+    ]
 ];

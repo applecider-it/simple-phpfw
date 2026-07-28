@@ -147,7 +147,6 @@ class DevelopmentController extends Controller
         Log::info('コンテナデータ' . Json::trace($all, true));
 
         $redis = App::get('redis');
-
         $redis->set('user:100', 'テスト100', 60);
         $username = $redis->get('user:100');
         Log::info('Redis動作確認', [$username]);

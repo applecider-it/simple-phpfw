@@ -38,7 +38,7 @@ class Callback
         })();
 
         $redis = new \Redis();
-        $redis->connect('127.0.0.1', 6379);
+        $redis->connect(Config::get('app.redis.host'), Config::get('app.redis.port'));
         App::getContainer()->setSingleton('redis', $redis, 'Redis');
     }
 

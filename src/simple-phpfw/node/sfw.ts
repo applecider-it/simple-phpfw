@@ -4,6 +4,8 @@ import path from "path";
 
 /**
  * SFW用Viteプラグイン
+ * 
+ * - Vite起動認識用のhotファイルの制御
  */
 export function SFWVitePlugin(baseDir: string): Plugin {
   const hotFilePath = path.resolve(baseDir, "public/hot");
