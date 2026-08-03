@@ -14,7 +14,10 @@ class Json
     /**
      * Jsonのリクエストか返す
      * 
-     * CONTENT_TYPEだけではなく、HTTP_X_REQUESTED_WITHの判断も必要な場合がある
+     * 下記の条件では、CONTENT_TYPEだけではなく、HTTP_X_REQUESTED_WITHの判断も必要
+     * 
+     * - fetchではなくaxiosを使う
+     * - GETメソッド
      */
     public static function isJsonRequest(): bool
     {
