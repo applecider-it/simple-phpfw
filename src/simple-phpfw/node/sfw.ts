@@ -1,10 +1,11 @@
 import { Plugin } from "vite";
 import fs from "fs";
 import path from "path";
+import { AddressInfo } from "net";
 
 /**
  * SFW用Viteプラグイン
- * 
+ *
  * - Vite起動認識用のhotファイルの制御
  */
 export function SFWVitePlugin(baseDir: string): Plugin {
@@ -16,8 +17,15 @@ export function SFWVitePlugin(baseDir: string): Plugin {
       server.httpServer?.once("listening", () => {
         // 開始時
 
+        // 実際のポート番号を取得（取得できない場合は設定値にフォールバック）
+        const address = server.httpServer?.address() as AddressInfo | null;
+        const port = address ? address.port : server.config.server.port;
+
+        // hotファイルにJSON形式で保存
+        const content = JSON.stringify({ port }, null, 2);
+
         // hotファイル作成
-        fs.writeFileSync(hotFilePath, "");
+        fs.writeFileSync(hotFilePath, content, "utf-8");
       });
 
       const cleanUp = () => {

@@ -33,6 +33,7 @@ export default defineConfig({
     },
   },
   server: {
+    port: 9001,
     watch: {
       usePolling: true,
       interval: 2000,

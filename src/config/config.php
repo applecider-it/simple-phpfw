@@ -53,10 +53,6 @@ return [
         'name' => "SFWSESSIONID",
     ],
 
-    'vite' => [
-        'port' => 5173,
-    ],
-
     // アプリケーション独自の設定
     'app' => $app,
 ];

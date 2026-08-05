@@ -6,7 +6,7 @@ cd ~/workspace/github/simple-phpfw/src
 port
 
 php: 9000
-vite: 5173
+vite: 9001
 
 -----------------------------------
 

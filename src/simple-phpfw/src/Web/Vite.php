@@ -19,8 +19,14 @@ class Vite
 
     function __construct()
     {
-        $this->isDev = file_exists(SFW_PROJECT_ROOT . '/public/hot');
-        $this->devUrl = 'http://localhost:' . Config::get('vite.port');
+        $hotFilePath = SFW_PROJECT_ROOT . '/public/hot';
+
+        $this->isDev = file_exists($hotFilePath);
+        $this->devUrl = '';
+        if ($this->isDev) {
+            $hotData = json_decode(file_get_contents($hotFilePath), true);
+            $this->devUrl = 'http://localhost:' . $hotData['port'];
+        }
         $this->prodUrl = '/build';
 
         $manifest_path = SFW_PROJECT_ROOT . '/public/build/.vite/manifest.json';
