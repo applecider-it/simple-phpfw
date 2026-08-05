@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace SFW\Web;
 
-use SFW\Core\Config;
-
 /**
  * Vite管理
  */
@@ -29,10 +27,10 @@ class Vite
         }
         $this->prodUrl = '/build';
 
-        $manifest_path = SFW_PROJECT_ROOT . '/public/build/.vite/manifest.json';
+        $manifestPath = SFW_PROJECT_ROOT . '/public/build/.vite/manifest.json';
 
         if (!$this->isDev) {
-            $this->manifest = json_decode(file_get_contents($manifest_path), true);
+            $this->manifest = json_decode(file_get_contents($manifestPath), true);
         }
     }
 
