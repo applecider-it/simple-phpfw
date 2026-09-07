@@ -86,7 +86,7 @@ abstract class Model
     }
 
     /** WHEREのSQL文 */
-    private static function whereSql($id): array
+    private static function whereSql(int $id): array
     {
         $sql = static::table() . '.' . static::$primary . ' = ?';
         $bindings = [$id];

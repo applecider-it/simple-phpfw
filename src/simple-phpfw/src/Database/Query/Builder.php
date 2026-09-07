@@ -72,12 +72,12 @@ class Builder
     public function build(bool $buildForCount): array
     {
         // カウント取得じゃないときはそのまま返す
-        if (! $buildForCount) return $this->buildSelect($buildForCount);
+        if (! $buildForCount) return $this->buildSelect(false);
 
         $needWrap = $this->needWrap();
 
         // 作業テーブルでラップする必要がないときはそのまま返す
-        if (! $needWrap) return $this->buildSelect($buildForCount);
+        if (! $needWrap) return $this->buildSelect(true);
 
         // 作業テーブルでラップする必要があるカウント取得時
 
