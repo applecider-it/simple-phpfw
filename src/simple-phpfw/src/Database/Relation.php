@@ -12,7 +12,7 @@ class Relation
     /**
      * 関連所属情報を混ぜる
      */
-    public static function withBelongs(
+    public static function withBelongsTo(
         array &$rows,
         string $relationColumn,
         Query $relationTableQuery,

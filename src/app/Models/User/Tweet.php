@@ -55,6 +55,6 @@ class Tweet extends Model
             ->column('name')
             ->column('email');
 
-        Relation::withBelongs($tweets, 'user_id', $query, 'id', 'user');
+        Relation::withBelongsTo($tweets, 'user_id', $query, 'id', 'user');
     }
 }
