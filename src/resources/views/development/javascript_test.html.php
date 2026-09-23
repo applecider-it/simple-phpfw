@@ -24,18 +24,11 @@ $list = [
 
     <div>
         <h3 class="app-h3">swiper</h3>
-        <div class="swiper-container swiper-container1">
-            <div class="swiper swiper1">
-                <div class="swiper-wrapper">
-                    <?php foreach ($list as $val): ?>
-                        <div class="swiper-slide">
-                            <Image src="<?= $this->h($val) ?>" alt="" class="mx-auto" />
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-
-                <div class="swiper-pagination swiper-pagination1"></div>
-            </div>
+        <div class="mt-5">
+            <?= $this->render('partials.ui.slide-show', ['list' => $list]) ?>
+        </div>
+        <div class="mt-5">
+            <?= $this->render('partials.ui.slide-show', ['list' => $list]) ?>
         </div>
     </div>
 </div>

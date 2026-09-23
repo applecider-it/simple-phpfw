@@ -1,4 +1,5 @@
 import "./bootstrap/alpinejs";
+import "./bootstrap/swiper";
 
 console.log("app start");
 
