@@ -1,11 +1,8 @@
 import axios from "axios";
 import type { AxiosRequestConfig } from "axios";
 
-import { getMetaJson } from "@/services/data/html";
-
 /** axiosインスタンス作成 */
 const api = axios.create({
-  baseURL: getMetaJson("app").prefix,
   headers: {
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest",

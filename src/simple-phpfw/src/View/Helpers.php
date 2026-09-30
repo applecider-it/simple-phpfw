@@ -28,12 +28,6 @@ trait Helpers
         return Html::esc($val);
     }
 
-    /** ファイル読み込みの際のキャッシュ対応 */
-    private function file(string $uri): string
-    {
-        return Html::file($uri);
-    }
-
     /** ルート取得 */
     private function route(string $name, array $data = []): string
     {

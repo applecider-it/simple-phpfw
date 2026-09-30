@@ -16,12 +16,4 @@ class Html
     {
         return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
     }
-
-    /** ファイル読み込み */
-    public static function file(string $uri): string
-    {
-        $prefix = Config::get('prefix');
-
-        return $prefix . $uri;
-    }
 }

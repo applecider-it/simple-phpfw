@@ -20,8 +20,6 @@ $user = Auth::get();
     <meta name="user" data-json="<?= $this->h(json_encode($user)) ?>">
 <?php endif; ?>
 
-<?= $this->render('partials.app.meta') ?>
-
 <?= $vite->init() ?>
 <?= $vite->importCss('resources/css/app.css') ?>
 <?= $vite->importJs('resources/js/entrypoints/app.ts') ?>

@@ -45,7 +45,7 @@
 
     <h3 class="app-h3 mt-10">ファイル読み込み動作確認</h3>
     <div>
-        <img class="w-20" src="<?= $this->file('/images/Block.png') ?>" />
+        <img class="w-20" src="/images/Block.png" />
     </div>
 
     <h3 class="app-h3 mt-10">カスタムヘルパー関数動作確認</h3>

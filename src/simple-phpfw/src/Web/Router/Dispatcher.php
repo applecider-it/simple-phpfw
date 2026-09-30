@@ -27,8 +27,6 @@ class Dispatcher
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-        $prefix = Config::get('prefix');
-        $uri = substr($uri, strlen($prefix));
         if ($uri === '') $uri = '/';
 
         $routes = $this->router->routes();

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { getMetaJson } from "@/services/data/html";
 import { sendData } from "@/services/api/rest";
 
 /** POST Jsonの送受信の動作確認 */
@@ -71,8 +70,6 @@ const postNosessionJsonTest = async () => {
  * 動作確認のため、あえて、csrfトークンを除外している送信
  */
 const sendDataNosession = async (method, uri, data) => {
-  const prefix = getMetaJson("app").prefix;
-
   const params = {
     method: method,
     headers: {
@@ -81,7 +78,7 @@ const sendDataNosession = async (method, uri, data) => {
     body: JSON.stringify(data),
   };
 
-  const res = await fetch(prefix + uri, params);
+  const res = await fetch(uri, params);
 
   // JSONとして受け取る
   const result = await res.json();

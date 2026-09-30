@@ -84,13 +84,11 @@ class Router
     {
         isset($this->names[$name]) ?: throw new \Exception("not found route name. [ $name ]");
 
-        $prefix = Config::get('prefix');
-
         $ret = Str::template($this->names[$name], $data, true);
 
         $rest = $ret['rest'];
 
-        $url = $prefix . $ret['text'];
+        $url = $ret['text'];
 
         if ($rest) $url .= '?' . http_build_query($rest);
 

@@ -20,8 +20,6 @@ $adminUser = Auth::get();
     <meta name="admin-user" data-json="<?= $this->h(json_encode($adminUser)) ?>">
 <?php endif; ?>
 
-<?= $this->render('partials.app.meta') ?>
-
 <?= $vite->init() ?>
 <?= $vite->importCss('resources/css/admin.css') ?>
 <?= $vite->importJs('resources/js/entrypoints/admin/app.ts') ?>

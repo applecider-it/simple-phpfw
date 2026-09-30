@@ -8,8 +8,6 @@
  * @var array $env
  */
 
-$prefix = $env['SFW_PREFIX'];
-
 // アプリケーション独自の設定
 $app = (fn($env) => include(__DIR__ . '/app.php'))($env);
 
@@ -20,9 +18,6 @@ $debug = $env['SFW_DEBUG'];
 
 return [
     'debug' => $debug,
-
-    // URIプレフィックス
-    'prefix' => $prefix,
 
     // アプリケーション名
     'applicationName' => 'My Site',
