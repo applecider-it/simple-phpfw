@@ -11,7 +11,7 @@ $desktopClass = 'hover:text-indigo-500';
         <!-- Logo -->
         <a href="<?= $this->h($this->route('admin.index')) ?>">
             <div
-                class="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+                class="text-2xl font-bold bg-linear-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
                 <?= $this->h($this->config('applicationName')) ?>
             </div>
         </a>

@@ -1,6 +1,6 @@
 <?php
-$partialClass = 'border border-gray-600 rounded-md p-3 my-4 bg-gray-100 shadow';
-$metaClass = 'text-gray-200 bg-gray-600 text-xs border border-gray-600 rounded px-2 py-1 my-2';
+$partialClass = 'border border-gray-600 rounded-md p-3 my-4 bg-gray-100 shadow-sm';
+$metaClass = 'text-gray-200 bg-gray-600 text-xs border border-gray-600 rounded-sm px-2 py-1 my-2';
 ?>
 <h2 class="app-h2">development.render_test</h2>
 <div>

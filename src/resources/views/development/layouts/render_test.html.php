@@ -15,7 +15,7 @@ use SFW\View\Layout;
 
     <main class="max-w-3xl mx-auto px-4 py-6 pb-12">
 
-        <div class="mb-6 p-4 border-2 border-gray-200 rounded-xl bg-white shadow-sm">
+        <div class="mb-6 p-4 border-2 border-gray-200 rounded-xl bg-white shadow-xs">
             development.layouts.render_test
         </div>
 

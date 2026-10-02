@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-6">
     <?php foreach ($data['tweets'] as $tweet): ?>
-        <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-4 hover:shadow-md transition">
+        <div class="bg-white border border-gray-200 rounded-xl shadow-xs p-4 hover:shadow-md transition">
             
             <div class="text-gray-800 text-base leading-relaxed mb-3">
                 <?= $this->h($tweet['content']) ?>

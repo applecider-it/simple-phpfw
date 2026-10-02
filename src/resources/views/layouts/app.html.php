@@ -10,9 +10,9 @@ use SFW\View\Layout;
 </head>
 
 <body
-    class="bg-gradient-to-br from-indigo-100 via-white to-blue-100 min-h-screen">
+    class="bg-linear-to-br from-indigo-100 via-white to-blue-100 min-h-screen">
     <div class="flex flex-col min-h-screen">
-        <div class="flex-grow">
+        <div class="grow">
             <?= $this->render('layouts.partials.nav') ?>
 
             <div class="max-w-4xl mx-auto px-5 pt-10 pb-40">

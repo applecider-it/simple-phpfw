@@ -36,4 +36,8 @@ npm install swiper
 
 npm install pusher-js
 
+-----------------------------------
+
+
+npx @tailwindcss/upgrade@latest
 

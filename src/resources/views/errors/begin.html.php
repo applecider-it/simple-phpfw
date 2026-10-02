@@ -6,9 +6,9 @@
 </head>
 
 <body
-    class="bg-gradient-to-br from-indigo-100 via-white to-blue-100 min-h-screen">
+    class="bg-linear-to-br from-indigo-100 via-white to-blue-100 min-h-screen">
     <div class="flex flex-col min-h-screen">
-        <div class="flex-grow">
+        <div class="grow">
             <?= $this->render('layouts.partials.nav') ?>
 
             <div class="p-5 pb-40">
