@@ -1,7 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+/* ボタン */
 
 @utility app-btn {
-  /* ボタン */
   @apply px-4 py-2 rounded-lg shadow-sm hover:scale-105 transition;
 }
 
@@ -17,8 +18,9 @@
   @apply px-3 py-1 text-sm;
 }
 
+/* タイトル */
+
 @utility app-h2 {
-  /* タイトル */
   @apply text-2xl font-bold tracking-tight text-gray-800 border-l-8 pl-4 border-blue-300 mb-4;
 }
 
@@ -26,52 +28,52 @@
   @apply text-xl font-semibold text-blue-700 my-3;
 }
 
+/* 通常のリンク */
 @utility app-link-normal {
-  /* 通常のリンク */
   @apply text-blue-600 hover:underline;
 }
 
+/* テキストボックス */
 @utility app-form-input {
-  /* テキストボックス */
   @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition;
 }
 
+/* フォームのラベル */
 @utility app-form-label {
-  /* フォームのラベル */
   @apply block text-sm font-medium text-gray-700 dark:text-gray-200;
 }
 
+/* フォームのエラー */
 @utility app-form-error {
-  /* フォームのエラー */
   @apply text-sm text-red-600;
 }
 
+/* テーブルをレスポンシブ対応させるためのコンテナ */
 @utility app-table-container {
-  /* テーブルをレスポンシブ対応させるためのコンテナ */
   @apply overflow-x-auto bg-white dark:bg-gray-800 shadow-md rounded-lg;
 }
 
+/* tableタグ用 */
 @utility app-table {
-  /* tableタグ用 */
   @apply min-w-full divide-y divide-gray-200 dark:divide-gray-700;
 }
 
+/* テーブルのtheadタグ用 */
 @utility app-table-thead {
-  /* テーブルのtheadタグ用 */
   @apply bg-gray-50 dark:bg-gray-700;
 }
 
+/* テーブルのtbodyタグ用 */
 @utility app-table-tbody {
-  /* テーブルのtbodyタグ用 */
   @apply bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700;
 }
 
+/* テーブルのthタグ用 */
 @utility app-table-th {
-  /* テーブルのthタグ用 */
   @apply px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-300 tracking-wider;
 }
 
+/* テーブルのtdタグ用 */
 @utility app-table-td {
-  /* テーブルのtdタグ用 */
   @apply px-6 py-3 whitespace-nowrap;
 }
