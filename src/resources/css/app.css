@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* PWAかの判別 */
+@custom-variant app-pwa (@media (display-mode: standalone));
+
 /* ボタン */
 
 @utility app-btn {

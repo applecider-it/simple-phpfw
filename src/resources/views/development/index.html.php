@@ -17,4 +17,8 @@
         <div><a href="<?= $this->h($this->route('development.index')) ?>/notfoud_test" class="app-link-normal">notfoud_test</a></div>
         <div><a href="<?= $this->h($this->route('development.exeption_test')) ?>" class="app-link-normal">exeption_test</a></div>
     </div>
+
+    <div class="app-pwa:hidden">
+        <div><a href="<?= $this->h($this->route('appli')) ?>" class="app-link-normal">appli</a></div>
+    </div>
 </div>
