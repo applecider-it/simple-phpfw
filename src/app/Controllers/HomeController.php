@@ -18,4 +18,9 @@ class HomeController extends Controller
     {
         return $this->render('pwa.manifest', layout: null);
     }
+    /** PWAアプリトップ */
+    public function appli()
+    {
+        return $this->render('pwa.appli', layout: null);
+    }
 }

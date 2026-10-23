@@ -69,6 +69,7 @@ $router->get('/', [HomeController::class, 'index'], ['name' => 'index']);
 
 // PWA
 $router->get('/manifest.json', [HomeController::class, 'manifest'], ['name' => 'manifest']);
+$router->get('/appli', [HomeController::class, 'appli'], ['name' => 'appli']);
 
 // 開発者向けページ
 (function ($router) {
