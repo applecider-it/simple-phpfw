@@ -23,3 +23,5 @@ $user = Auth::get();
 <?= $vite->init() ?>
 <?= $vite->importCss('resources/css/app.css') ?>
 <?= $vite->importJs('resources/js/entrypoints/app.ts') ?>
+
+<link rel="manifest" href="/manifest.json">

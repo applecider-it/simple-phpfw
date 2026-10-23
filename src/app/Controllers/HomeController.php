@@ -12,4 +12,10 @@ class HomeController extends Controller
     {
         return $this->render('home.index');
     }
+
+    /** PWAマニフェストJSON */
+    public function manifest()
+    {
+        return $this->render('pwa.manifest', layout: null);
+    }
 }

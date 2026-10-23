@@ -67,6 +67,9 @@ $router->get('/', [HomeController::class, 'index'], ['name' => 'index']);
     $router->post($prefix . '/destroy', [$controller, 'destroy'], $options + ['name' => 'user.destroy']);
 })($router);
 
+// PWA
+$router->get('/manifest.json', [HomeController::class, 'manifest'], ['name' => 'manifest']);
+
 // 開発者向けページ
 (function ($router) {
     $prefix = '/development';
